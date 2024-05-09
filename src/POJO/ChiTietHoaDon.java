@@ -12,12 +12,12 @@ public class ChiTietHoaDon {
     private int idHoaDon;
     private int idSanPham;
     private int soLuong;
-    private float donGia;
+    private long donGia;
 
     public ChiTietHoaDon() {
     }
 
-    public ChiTietHoaDon(int idHoaDon, int idSanPham, int soLuong, float donGia) {
+    public ChiTietHoaDon(int idHoaDon, int idSanPham, int soLuong, long donGia) {
         this.idHoaDon = idHoaDon;
         this.idSanPham = idSanPham;
         this.soLuong = soLuong;
@@ -52,7 +52,7 @@ public class ChiTietHoaDon {
         return donGia;
     }
 
-    public void setDonGia(float donGia) {
+    public void setDonGia(long donGia) {
         this.donGia = donGia;
     }
     

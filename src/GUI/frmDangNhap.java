@@ -66,9 +66,9 @@ public class frmDangNhap extends javax.swing.JFrame {
         jLabel5.setText("Chào mừng đến ");
         jLabel5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/logo_FashionShop.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logo_FashionShop.png"))); // NOI18N
 
-        jLabel9.setIcon(new javax.swing.ImageIcon("D:\\Huit23-24\\HK2\\Java\\BTLon\\FashionShopManagement_JAVA\\assets\\system.png")); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/system.png"))); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -143,7 +143,7 @@ public class frmDangNhap extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/user.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user.png"))); // NOI18N
         jLabel7.setPreferredSize(new java.awt.Dimension(20, 20));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -170,7 +170,7 @@ public class frmDangNhap extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/padlock.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/padlock.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
