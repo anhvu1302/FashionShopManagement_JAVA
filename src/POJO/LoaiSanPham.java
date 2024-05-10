@@ -12,6 +12,15 @@ public class LoaiSanPham {
     private int idLoaiSP;
     private String tenLoaiSP;
     private int idLoaiSPCha;
+    private String tenLoaiSPCha;
+
+    public String getTenLoaiSPCha() {
+        return tenLoaiSPCha;
+    }
+
+    public void setTenLoaiSPCha(String tenLoaiSPCha) {
+        this.tenLoaiSPCha = tenLoaiSPCha;
+    }
 
     public int getIdLoaiSP() {
         return idLoaiSP;
