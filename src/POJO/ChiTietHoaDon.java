@@ -4,22 +4,19 @@
  */
 package POJO;
 
-/**
- *
- * @author Nah nah
- */
+
 public class ChiTietHoaDon {
     private int idHoaDon;
-    private int idSanPham;
+    private int idKieuSanPham;
     private int soLuong;
     private long donGia;
 
     public ChiTietHoaDon() {
     }
 
-    public ChiTietHoaDon(int idHoaDon, int idSanPham, int soLuong, long donGia) {
+    public ChiTietHoaDon(int idHoaDon, int idKieuSanPham, int soLuong, long donGia) {
         this.idHoaDon = idHoaDon;
-        this.idSanPham = idSanPham;
+        this.idKieuSanPham = idKieuSanPham;
         this.soLuong = soLuong;
         this.donGia = donGia;
     }
@@ -32,12 +29,12 @@ public class ChiTietHoaDon {
         this.idHoaDon = idHoaDon;
     }
 
-    public int getIdSanPham() {
-        return idSanPham;
+    public int getIdKieuSanPham() {
+        return idKieuSanPham;
     }
 
-    public void setIdSanPham(int idSanPham) {
-        this.idSanPham = idSanPham;
+    public void setIdKieuSanPham(int idKieuSanPham) {
+        this.idKieuSanPham = idKieuSanPham;
     }
 
     public int getSoLuong() {
@@ -48,12 +45,13 @@ public class ChiTietHoaDon {
         this.soLuong = soLuong;
     }
 
-    public float getDonGia() {
+    public long getDonGia() {
         return donGia;
     }
 
     public void setDonGia(long donGia) {
         this.donGia = donGia;
     }
+    
     
 }

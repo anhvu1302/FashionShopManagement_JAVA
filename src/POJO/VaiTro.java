@@ -4,10 +4,7 @@
  */
 package POJO;
 
-/**
- *
- * @author Nah nah
- */
+
 public class VaiTro {
     private int idVaiTro ;
     private String tenVaiTro;

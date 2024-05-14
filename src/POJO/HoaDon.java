@@ -6,10 +6,7 @@ package POJO;
 
 import java.util.Date;
 
-/**
- *
- * @author Nah nah
- */
+
 public class HoaDon {
     private int idHoaDon;
     private int idNhanVien;

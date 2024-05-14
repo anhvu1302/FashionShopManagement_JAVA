@@ -4,22 +4,19 @@
  */
 package POJO;
 
-/**
- *
- * @author Nah nah
- */
+
 public class ChiTietHoaDonNhapKho {
     private int idHoaDonNhapKho;
-    private int idSanPham;
+    private int idKieuSanPham;
     private int soLuong;
 
-    public ChiTietHoaDonNhapKho(int idHoaDonNhapKho, int idSanPham, int soLuong) {
-        this.idHoaDonNhapKho = idHoaDonNhapKho;
-        this.idSanPham = idSanPham;
-        this.soLuong = soLuong;
+    public ChiTietHoaDonNhapKho() {
     }
 
-    public ChiTietHoaDonNhapKho() {
+    public ChiTietHoaDonNhapKho(int idHoaDonNhapKho, int idKieuSanPham, int soLuong) {
+        this.idHoaDonNhapKho = idHoaDonNhapKho;
+        this.idKieuSanPham = idKieuSanPham;
+        this.soLuong = soLuong;
     }
 
     public int getIdHoaDonNhapKho() {
@@ -30,12 +27,12 @@ public class ChiTietHoaDonNhapKho {
         this.idHoaDonNhapKho = idHoaDonNhapKho;
     }
 
-    public int getIdSanPham() {
-        return idSanPham;
+    public int getIdKieuSanPham() {
+        return idKieuSanPham;
     }
 
-    public void setIdSanPham(int idSanPham) {
-        this.idSanPham = idSanPham;
+    public void setIdKieuSanPham(int idKieuSanPham) {
+        this.idKieuSanPham = idKieuSanPham;
     }
 
     public int getSoLuong() {
@@ -45,4 +42,5 @@ public class ChiTietHoaDonNhapKho {
     public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
     }
+    
 }

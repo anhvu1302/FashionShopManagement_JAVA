@@ -4,56 +4,41 @@
  */
 package POJO;
 
-import java.util.Date;
 
-/**
- *
- * @author Nah nah
- */
 public class KhachHang {
-    private int idKH;
-    private String tenKH;
-    private Date ngaySinh;
+    private int idKhachHang;
+    private String tenKhachHang;
     private String gioiTinh;
-    private String diaChi;
     private String soDienThoai;
     private String email;
+    private long diem;
 
     public KhachHang() {
     }
 
-    public KhachHang(int idKH, String tenKH, Date ngaySinh, String gioiTinh, String diaChi, String soDienThoai, String email) {
-        this.idKH = idKH;
-        this.tenKH = tenKH;
-        this.ngaySinh = ngaySinh;
+    public KhachHang(int idKhachHang, String tenKhachHang, String gioiTinh, String soDienThoai, String email, long diem) {
+        this.idKhachHang = idKhachHang;
+        this.tenKhachHang = tenKhachHang;
         this.gioiTinh = gioiTinh;
-        this.diaChi = diaChi;
         this.soDienThoai = soDienThoai;
         this.email = email;
+        this.diem = diem;
     }
 
-    public int getIdKH() {
-        return idKH;
+    public int getIdKhachHang() {
+        return idKhachHang;
     }
 
-    public void setIdKH(int idKH) {
-        this.idKH = idKH;
+    public void setIdKhachHang(int idKhachHang) {
+        this.idKhachHang = idKhachHang;
     }
 
-    public String getTenKH() {
-        return tenKH;
+    public String getTenKhachHang() {
+        return tenKhachHang;
     }
 
-    public void setTenKH(String tenKH) {
-        this.tenKH = tenKH;
-    }
-
-    public Date getNgaySinh() {
-        return ngaySinh;
-    }
-
-    public void setNgaySinh(Date ngaySinh) {
-        this.ngaySinh = ngaySinh;
+    public void setTenKhachHang(String tenKhachHang) {
+        this.tenKhachHang = tenKhachHang;
     }
 
     public String getGioiTinh() {
@@ -62,14 +47,6 @@ public class KhachHang {
 
     public void setGioiTinh(String gioiTinh) {
         this.gioiTinh = gioiTinh;
-    }
-
-    public String getDiaChi() {
-        return diaChi;
-    }
-
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
     }
 
     public String getSoDienThoai() {
@@ -87,5 +64,12 @@ public class KhachHang {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
+    public long getDiem() {
+        return diem;
+    }
+
+    public void setDiem(long diem) {
+        this.diem = diem;
+    }
 }
