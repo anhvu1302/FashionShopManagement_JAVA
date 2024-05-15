@@ -6,8 +6,8 @@ package POJO;
 
 import java.util.Date;
 
-
 public class NhanVien {
+
     private int idNhanVien;
     private String tenTaiKhoan;
     private String matKhau;
@@ -20,7 +20,23 @@ public class NhanVien {
     private String email;
     private boolean tonTai;
     private boolean cam;
+
     public NhanVien() {
+    }
+
+    public NhanVien(NhanVien nv) {
+        this.idNhanVien = nv.idNhanVien;
+        this.tenTaiKhoan = nv.tenTaiKhoan;
+        this.matKhau = nv.matKhau;
+        this.idVaiTro = nv.idVaiTro;
+        this.tenNhanVien = nv.tenNhanVien;
+        this.ngaySinh = nv.ngaySinh;
+        this.gioiTinh = nv.gioiTinh;
+        this.diaChi = nv.diaChi;
+        this.soDienThoai = nv.soDienThoai;
+        this.email = nv.email;
+        this.tonTai = nv.tonTai;
+        this.cam = nv.cam;
     }
 
     public NhanVien(int idNhanVien, String tenTaiKhoan, String matKhau, int idVaiTro, String tenNhanVien, Date ngaySinh, String gioiTinh, String diaChi, String soDienThoai, String email, boolean tonTai, boolean cam) {
@@ -133,5 +149,5 @@ public class NhanVien {
     public void setCam(boolean cam) {
         this.cam = cam;
     }
-    
+
 }

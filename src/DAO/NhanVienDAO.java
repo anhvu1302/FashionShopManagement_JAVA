@@ -5,6 +5,7 @@
 package DAO;
 
 import POJO.NhanVien;
+import Utils.PasswordHashing;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -13,15 +14,16 @@ import java.util.ArrayList;
  * @author Nah nah
  */
 public class NhanVienDAO {
-    public static ArrayList<NhanVien> layDSTaiKhoan(){
+
+    public static ArrayList<NhanVien> layDSTaiKhoan() {
         ArrayList<NhanVien> dsTK = new ArrayList<NhanVien>();
         try {
-            String sql="SELECT TenTaiKhoan,MatKhau FROM NhanVien";
-            SQLServerDataProvider provider= new SQLServerDataProvider();
+            String sql = "SELECT TenTaiKhoan,MatKhau FROM NhanVien";
+            SQLServerDataProvider provider = new SQLServerDataProvider();
             provider.open();
-            ResultSet rs=provider.executeQuery(sql);
-            while(rs.next()){
-                NhanVien nv= new NhanVien();
+            ResultSet rs = provider.executeQuery(sql);
+            while (rs.next()) {
+                NhanVien nv = new NhanVien();
                 nv.setTenNhanVien(rs.getString(1));
                 nv.setMatKhau(rs.getString(2));
                 dsTK.add(nv);
@@ -32,19 +34,35 @@ public class NhanVienDAO {
         }
         return dsTK;
     }
-    public static boolean ktTKTonTai(String tenTK,String matKhau)
-    {
+
+    public static NhanVien getNhanVienByTenTk(String tenTK) {
+        NhanVien nv = null;
+        SQLServerDataProvider provider = new SQLServerDataProvider();
         try {
-            String sqlSelect=String.format("select TenTaiKhoan,MatKhau from NhanVien where TenTaiKhoan='%s'"+" and MatKhau= '%s'",tenTK,matKhau);
-            SQLServerDataProvider provider= new SQLServerDataProvider();
+            String sqlSelect = String.format("SELECT IdNhanVien, TenTaiKhoan, MatKhau, IdVaiTro, TenNhanVien, NgaySinh, GioiTinh, DiaChi, SoDienThoai, Email, TonTai, Cam FROM NhanVien WHERE TenTaiKhoan = '%s';", tenTK);
             provider.open();
-            ResultSet rs= provider.executeQuery(sqlSelect);
-            if(rs.next())
-                return true;
+            ResultSet rs = provider.executeQuery(sqlSelect);
+            if (rs.next()) {
+                nv = new NhanVien();
+                nv.setIdNhanVien(rs.getInt("IdNhanVien"));
+                nv.setTenTaiKhoan(rs.getString("TenTaiKhoan"));
+                nv.setMatKhau(rs.getString("MatKhau"));
+                nv.setIdVaiTro(rs.getInt("IdVaiTro"));
+                nv.setTenNhanVien(rs.getString("TenNhanVien"));
+                nv.setNgaySinh(rs.getDate("NgaySinh"));
+                nv.setGioiTinh(rs.getString("GioiTinh"));
+                nv.setDiaChi(rs.getString("DiaChi"));
+                nv.setSoDienThoai(rs.getString("SoDienThoai"));
+                nv.setEmail(rs.getString("Email"));
+                nv.setTonTai(rs.getBoolean("TonTai"));
+                nv.setCam(rs.getBoolean("Cam"));
+            }
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            provider.close();
         }
-        return false;
+        return nv;
     }
-    
+
 }

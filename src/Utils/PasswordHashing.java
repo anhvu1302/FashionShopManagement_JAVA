@@ -65,14 +65,14 @@ public class PasswordHashing {
         }
     }
 
-    public static void main(String[] args) {
-        String password = "password123";
-        String hashedPassword = hashPassword(password);
-        System.out.println("Hashed password: " + hashedPassword);
-
-        // Kiểm tra mật khẩu có trùng khớp với mật khẩu gốc không
-        boolean isMatch = verifyPassword(password, hashedPassword);
-        System.out.println("Password match: " + isMatch);
-    }
+//    public static void main(String[] args) {
+//        String password = "password123";
+//        String hashedPassword = hashPassword(password);
+//        System.out.println("Hashed password: " + hashedPassword);
+//
+//        // Kiểm tra mật khẩu có trùng khớp với mật khẩu gốc không
+//        boolean isMatch = verifyPassword(password, hashedPassword);
+//        System.out.println("Password match: " + isMatch);
+//    }
 }
 

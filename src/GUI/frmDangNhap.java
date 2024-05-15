@@ -6,6 +6,7 @@ package GUI;
 
 import DAO.NhanVienDAO;
 import POJO.NhanVien;
+import Utils.PasswordHashing;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +20,7 @@ public class frmDangNhap extends javax.swing.JFrame {
      */
     public frmDangNhap() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -46,8 +48,8 @@ public class frmDangNhap extends javax.swing.JFrame {
         txtTenTK = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        txtMatKhau = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        txtMatKhau = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(591, 480));
@@ -161,11 +163,10 @@ public class frmDangNhap extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(txtTenTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(12, Short.MAX_VALUE))
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(txtTenTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -187,9 +188,9 @@ public class frmDangNhap extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
-                    .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
@@ -264,12 +265,26 @@ public class frmDangNhap extends javax.swing.JFrame {
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         // TODO add your handling code here:
-        String tenTK= txtTenTK.getText();
-        String passwork= txtMatKhau.getText();
-        if(NhanVienDAO.ktTKTonTai(tenTK, passwork)){
-            JOptionPane.showMessageDialog(this, "Đăng nhập thành công!","Thông báo",JOptionPane.INFORMATION_MESSAGE);
-        }else JOptionPane.showMessageDialog(this, "Tài khoản hoặc mật khẩu sai!","Đăng nhập KHÔNG THÀNH CÔNG!",JOptionPane.INFORMATION_MESSAGE);
-        
+        String tenTK = txtTenTK.getText();
+        String password = txtMatKhau.getText();
+        NhanVien nv = NhanVienDAO.getNhanVienByTenTk(tenTK);
+        if (PasswordHashing.verifyPassword(password, nv.getMatKhau())) {
+            if (nv.isTonTai()) {
+                if (nv.isCam()) {
+                    JOptionPane.showMessageDialog(this, "Tài khoản đã bị cấm. Vui lòng liên hệ quản trị viên!", "Đăng nhập không thành công!", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    this.setVisible(false);
+                    frmMain frm = new frmMain();
+                    frm.setVisible(true);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Tài khoản không còn tôn tại. Vui lòng liên hệ quản trị viên!", "Đăng nhập không thành công!", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Tài khoản hoặc mật khẩu sai!", "Đăng nhập không thành công!", JOptionPane.WARNING_MESSAGE);
+        }
+
+
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     /**
@@ -324,7 +339,7 @@ public class frmDangNhap extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField txtMatKhau;
+    private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JTextField txtTenTK;
     // End of variables declaration//GEN-END:variables
 }
