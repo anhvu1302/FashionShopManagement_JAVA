@@ -4,19 +4,27 @@
  */
 package POJO;
 
-
 public class LoaiSanPham {
+
     private int idLoaiSP;
     private String tenLoaiSP;
     private int idLoaiSPCha;
-    private String tenLoaiSPCha;
+    private LoaiSanPhamCha loaiSanPhamCha;
 
-    public String getTenLoaiSPCha() {
-        return tenLoaiSPCha;
+    public LoaiSanPham() {
     }
 
-    public void setTenLoaiSPCha(String tenLoaiSPCha) {
-        this.tenLoaiSPCha = tenLoaiSPCha;
+    public LoaiSanPham(int idLoaiSP, String tenLoaiSP, int idLoaiSPCha) {
+        this.idLoaiSP = idLoaiSP;
+        this.tenLoaiSP = tenLoaiSP;
+        this.idLoaiSPCha = idLoaiSPCha;
+    }
+
+    public LoaiSanPham(int idLoaiSP, String tenLoaiSP, int idLoaiSPCha, LoaiSanPhamCha loaiSanPhamCha) {
+        this.idLoaiSP = idLoaiSP;
+        this.tenLoaiSP = tenLoaiSP;
+        this.idLoaiSPCha = idLoaiSPCha;
+        this.loaiSanPhamCha = loaiSanPhamCha;
     }
 
     public int getIdLoaiSP() {
@@ -43,12 +51,16 @@ public class LoaiSanPham {
         this.idLoaiSPCha = idLoaiSPCha;
     }
 
-    public LoaiSanPham(int idLoaiSP, String tenLoaiSP, int idLoaiSPCha) {
-        this.idLoaiSP = idLoaiSP;
-        this.tenLoaiSP = tenLoaiSP;
-        this.idLoaiSPCha = idLoaiSPCha;
+    public LoaiSanPhamCha getLoaiSanPhamCha() {
+        return loaiSanPhamCha;
     }
 
-    public LoaiSanPham() {
+    public void setLoaiSanPhamCha(LoaiSanPhamCha loaiSanPhamCha) {
+        this.loaiSanPhamCha = loaiSanPhamCha;
+    }
+
+    @Override
+    public String toString() {
+        return tenLoaiSP;
     }
 }

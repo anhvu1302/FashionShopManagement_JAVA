@@ -4,7 +4,7 @@
  */
 package DAO;
 
-import POJO.LoaiSanPham;
+import POJO.*;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -14,10 +14,10 @@ import java.util.ArrayList;
  */
 public class LoaiSanPhamDAO {
 
-    public static ArrayList<LoaiSanPham> layDSLoaiSP() {
+    public static ArrayList<LoaiSanPham> getAll() {
         ArrayList<LoaiSanPham> dsLoaiSP = new ArrayList<>();
         try {
-            String sql = "SELECT A.*, TenLoaiSPCha FROM LoaiSanPham A INNER JOIN LoaiSanPhamCha B ON A.IdLoaiSPCha = B.IdLoaiSPCha";
+            String sql = " SELECT IdLoaiSP,TenLoaiSP,LSP.IdLoaiSPCha, TenLoaiSPCha FROM LoaiSanPham LSP INNER JOIN LoaiSanPhamCha LSPC ON LSP.IdLoaiSPCha = LSPC.IdLoaiSPCha ORDER BY IdLoaiSP";
             SQLServerDataProvider provider = new SQLServerDataProvider();
             provider.open();
             ResultSet rs = provider.executeQuery(sql);
@@ -25,7 +25,8 @@ public class LoaiSanPhamDAO {
                 LoaiSanPham lsp = new LoaiSanPham();
                 lsp.setIdLoaiSP(rs.getInt(1));
                 lsp.setTenLoaiSP(rs.getString(2));
-                lsp.setTenLoaiSPCha(rs.getString(4));
+                LoaiSanPhamCha lspc = new LoaiSanPhamCha(rs.getInt(3), rs.getString(4));
+                lsp.setLoaiSanPhamCha(lspc);
                 dsLoaiSP.add(lsp);
             }
             provider.close();
@@ -35,37 +36,31 @@ public class LoaiSanPhamDAO {
         return dsLoaiSP;
     }
 
-    public static boolean themLoaiSanPham(LoaiSanPham lsp) {
-        boolean kq = false;
-        String sql = String.format("INSERT INTO LoaiSanPham(TenLoaiSP,IdLoaiSPCha) VALUES ('%s','%d');", lsp.getTenLoaiSP(), lsp.getIdLoaiSPCha());
-        SQLServerDataProvider provider = new SQLServerDataProvider();
-        provider.open();
-        int n = provider.executeUpdate(sql);
-        if (n == 1) {
-            kq = true;
-        }
-        provider.close();
-        return kq;
-    }
-
-    public static int timMaLoaiSanPhamCha(String ten) {
+    public static ArrayList<LoaiSanPham> getByTen(String ten) {
+        ArrayList<LoaiSanPham> dsLoaiSP = new ArrayList<>();
         try {
-            String sqlSelect = String.format("Select IdLoaiSPCha from LoaiSanPhamCha where TenLoaiSPCha=N'%s'", ten);
+            String sql = String.format("  SELECT IdLoaiSP,TenLoaiSP,LSP.IdLoaiSPCha, TenLoaiSPCha FROM LoaiSanPham LSP INNER JOIN LoaiSanPhamCha LSPC ON LSP.IdLoaiSPCha = LSPC.IdLoaiSPCha WHERE TenLoaiSP LIKE '%%%s%%' ORDER BY IdLoaiSP", ten);
             SQLServerDataProvider provider = new SQLServerDataProvider();
             provider.open();
-            ResultSet rs = provider.executeQuery(sqlSelect);
-            if (rs.next()) {
-                return rs.getInt("IdLoaiSPCha");
+            ResultSet rs = provider.executeQuery(sql);
+            while (rs.next()) {
+                LoaiSanPham lsp = new LoaiSanPham();
+                lsp.setIdLoaiSP(rs.getInt(1));
+                lsp.setTenLoaiSP(rs.getString(2));
+                LoaiSanPhamCha lspc = new LoaiSanPhamCha(rs.getInt(3), rs.getString(4));
+                lsp.setLoaiSanPhamCha(lspc);
+                dsLoaiSP.add(lsp);
             }
+            provider.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return -1;
+        return dsLoaiSP;
     }
 
-    public static boolean updateLoaiSanPham(LoaiSanPham lsp) {
+    public static boolean add(LoaiSanPham lsp) {
         boolean kq = false;
-        String sql = String.format("UPDATE LoaiSanPham SET TenLoaiSP='%s', IdLoaiSPCha='%d' WHERE IdLoaiSP='%d'", lsp.getTenLoaiSP(), lsp.getIdLoaiSPCha(), lsp.getIdLoaiSP());
+        String sql = String.format("INSERT INTO LoaiSanPham(TenLoaiSP,IdLoaiSPCha) VALUES (N'%s','%d');", lsp.getTenLoaiSP(), lsp.getIdLoaiSPCha());
         SQLServerDataProvider provider = new SQLServerDataProvider();
         provider.open();
         int n = provider.executeUpdate(sql);
@@ -76,9 +71,34 @@ public class LoaiSanPhamDAO {
         return kq;
     }
 
-    public static boolean xoaLoaiSanPham(int idLoaiSP) {
+    public static boolean updateById(LoaiSanPham lsp) {
+        boolean kq = false;
+        String sql = String.format("UPDATE LoaiSanPham SET TenLoaiSP=N'%s', IdLoaiSPCha=%d WHERE IdLoaiSP=%d", lsp.getTenLoaiSP(), lsp.getIdLoaiSPCha(), lsp.getIdLoaiSP());
+        SQLServerDataProvider provider = new SQLServerDataProvider();
+        provider.open();
+        int n = provider.executeUpdate(sql);
+        if (n == 1) {
+            kq = true;
+        }
+        provider.close();
+        return kq;
+    }
+
+    public static boolean updateByList(ArrayList<LoaiSanPham> lst) {
+        boolean result = true;
+
+        for (LoaiSanPham lsp : lst) {
+            if (!updateById(lsp)) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
+    public static boolean deleteById(int id) {
         boolean success = false;
-        String sql = String.format("DELETE FROM LoaiSanPham WHERE IdLoaiSP = %d", idLoaiSP);
+        String sql = String.format("DELETE FROM LoaiSanPham WHERE IdLoaiSP = %d", id);
         SQLServerDataProvider provider = new SQLServerDataProvider();
         provider.open();
         int n = provider.executeUpdate(sql);
@@ -87,6 +107,33 @@ public class LoaiSanPhamDAO {
         }
         provider.close();
         return success;
+    }
+
+    public static boolean deleteByList(ArrayList<LoaiSanPham> lst) {
+        boolean result = true;
+
+        for (LoaiSanPham lsp : lst) {
+            if (!deleteById(lsp.getIdLoaiSP())) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
+    public static boolean isForeignKeyExists(int maLSP) {
+        try {
+            String sqlSelect = String.format("SELECT * FROM SanPham WHERE IdLoaiSP = %d", maLSP);
+            SQLServerDataProvider provider = new SQLServerDataProvider();
+            provider.open();
+            ResultSet rs = provider.executeQuery(sqlSelect);
+            if (rs.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 }

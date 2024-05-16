@@ -4,8 +4,8 @@
  */
 package POJO;
 
-
 public class LoaiSanPhamCha {
+
     private int idLoaiSPCha;
     private String tenLoaiSPCha;
 
@@ -32,4 +32,10 @@ public class LoaiSanPhamCha {
     public void setTenLoaiSPCha(String tenLoaiSPCha) {
         this.tenLoaiSPCha = tenLoaiSPCha;
     }
+
+    @Override
+    public String toString() {
+        return tenLoaiSPCha;
+    }
+
 }
