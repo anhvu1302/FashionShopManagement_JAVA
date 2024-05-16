@@ -6,10 +6,6 @@ package GUI;
 
 import javax.swing.JInternalFrame;
 
-/**
- *
- * @author Nah nah
- */
 public class frmMain extends javax.swing.JFrame {
 
     /**
@@ -168,47 +164,47 @@ public class frmMain extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void showFrm(JInternalFrame newframe){
+    private void showFrm(JInternalFrame newframe) {
         this.desktopPane.removeAll();
         newframe.setVisible(true);
         newframe.setBounds(0, 0, desktopPane.getWidth(), desktopPane.getHeight());
         this.desktopPane.add(newframe);
     }
     private void mnuThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuThongKeActionPerformed
-        // TODO add your handling code here:
-        frmThongKe frm= new frmThongKe();
+
+        frmThongKe frm = new frmThongKe();
         showFrm(frm);
     }//GEN-LAST:event_mnuThongKeActionPerformed
 
     private void mnuThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuThanhToanActionPerformed
-        this.desktopPane.removeAll();
-        frmThanhToan frm= new frmThanhToan();
+
+        frmThanhToan frm = new frmThanhToan();
         showFrm(frm);
-        
+
     }//GEN-LAST:event_mnuThanhToanActionPerformed
 
     private void mnuQLSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuQLSPActionPerformed
-        frmQLSP frm= new frmQLSP();
+        frmQLSP frm = new frmQLSP();
         showFrm(frm);
     }//GEN-LAST:event_mnuQLSPActionPerformed
 
     private void mnuQPLoaiSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuQPLoaiSPActionPerformed
-        frmQLLoaiSanPham frm= new frmQLLoaiSanPham();
+        frmQLLoaiSanPham frm = new frmQLLoaiSanPham();
         showFrm(frm);
     }//GEN-LAST:event_mnuQPLoaiSPActionPerformed
 
     private void mnuQLKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuQLKhachHangActionPerformed
-        frmQLKhachHang frm= new frmQLKhachHang();
+        frmQLKhachHang frm = new frmQLKhachHang();
         showFrm(frm);
     }//GEN-LAST:event_mnuQLKhachHangActionPerformed
 
     private void mnuQLHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuQLHoaDonActionPerformed
-        frmQLHoaDon frm= new frmQLHoaDon();
+        frmQLHoaDon frm = new frmQLHoaDon();
         showFrm(frm);
     }//GEN-LAST:event_mnuQLHoaDonActionPerformed
 
     private void mnuQLNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuQLNhanVienActionPerformed
-        frmQLNhanVien frm= new frmQLNhanVien();
+        frmQLNhanVien frm = new frmQLNhanVien();
         showFrm(frm);
     }//GEN-LAST:event_mnuQLNhanVienActionPerformed
 

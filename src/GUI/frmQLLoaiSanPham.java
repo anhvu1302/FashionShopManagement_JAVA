@@ -461,6 +461,7 @@ public class frmQLLoaiSanPham extends javax.swing.JInternalFrame {
         txtSearchTenLSPC.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         btnSearchLSPC.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnSearchLSPC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/find.png"))); // NOI18N
         btnSearchLSPC.setText("Tìm kiếm");
         btnSearchLSPC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -520,7 +521,7 @@ public class frmQLLoaiSanPham extends javax.swing.JInternalFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLuuLSPC)
                     .addComponent(btnResetSearchLSPC))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jPanel7.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 530, 130));
