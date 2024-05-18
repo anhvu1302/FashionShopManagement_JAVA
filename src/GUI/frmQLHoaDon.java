@@ -97,7 +97,7 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
 
         btnResetLoaiSPCha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
         btnResetLoaiSPCha.setText("Reset");
-        btnResetLoaiSPCha.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnResetLoaiSPCha.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnResetLoaiSPCha.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnResetLoaiSPCha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,7 +107,7 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
 
         btnthemLoaiSPCha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/add.png"))); // NOI18N
         btnthemLoaiSPCha.setText("Thêm");
-        btnthemLoaiSPCha.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnthemLoaiSPCha.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnthemLoaiSPCha.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnthemLoaiSPCha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +117,7 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
 
         btnupdateLoaiSPCha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/updated.png"))); // NOI18N
         btnupdateLoaiSPCha.setText("Cập nhật");
-        btnupdateLoaiSPCha.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnupdateLoaiSPCha.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnupdateLoaiSPCha.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnupdateLoaiSPCha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +127,7 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
 
         btndeleteLoaiSPCha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
         btndeleteLoaiSPCha.setText("Xoá");
-        btndeleteLoaiSPCha.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btndeleteLoaiSPCha.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btndeleteLoaiSPCha.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btndeleteLoaiSPCha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,28 +145,26 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnResetLoaiSPCha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnthemLoaiSPCha)
                 .addGap(18, 18, 18)
                 .addComponent(btnupdateLoaiSPCha)
                 .addGap(18, 18, 18)
                 .addComponent(btndeleteLoaiSPCha, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(41, 41, 41))
+                .addGap(30, 30, 30)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnResetLoaiSPCha, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnthemLoaiSPCha, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnupdateLoaiSPCha, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btndeleteLoaiSPCha, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(btnResetLoaiSPCha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnthemLoaiSPCha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnupdateLoaiSPCha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btndeleteLoaiSPCha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 

@@ -184,7 +184,7 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuThanhToanActionPerformed
 
     private void mnuQLSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuQLSPActionPerformed
-        frmQLSP frm = new frmQLSP();
+        frmQLSanPham frm = new frmQLSanPham();
         showFrm(frm);
     }//GEN-LAST:event_mnuQLSPActionPerformed
 

@@ -172,18 +172,9 @@ public class frmQLLoaiSanPham extends javax.swing.JInternalFrame {
                 int selectedRow = tbl_LoaiSP.getSelectedRow();
                 if (selectedRow != -1) {
                     int id = (Integer) tbl_LoaiSP.getValueAt(tbl_LoaiSP.getSelectedRow(), 0);
-                    String ten = (String) tbl_LoaiSP.getValueAt(tbl_LoaiSP.getSelectedRow(), 1);
-                    TableColumn idLoaiSPColumn = tbl_LoaiSP.getColumnModel().getColumn(2); // Thay 2 bằng chỉ số của cột
-                    TableCellEditor cellEditor = idLoaiSPColumn.getCellEditor();
-                    LoaiSanPhamCha lspc = null;
-                    if (cellEditor instanceof DefaultCellEditor) {
-                        Component component = ((DefaultCellEditor) cellEditor).getComponent();
-                        if (component instanceof JComboBox) {
-                            JComboBox<?> comboBox = (JComboBox<?>) component;
-                            lspc = (LoaiSanPhamCha) comboBox.getSelectedItem();
-                        }
-                    }
-                    lstDeleteLSP.add(new LoaiSanPham(id, ten, lspc.getIdLoaiSPCha()));
+                    LoaiSanPham lsp = new LoaiSanPham();
+                    lsp.setIdLoaiSP(id);
+                    lstDeleteLSP.add(lsp);
                     dtmLSP.removeRow(selectedRow);
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Vui lòng chọn dòng dữ liệu", "Thông báo", JOptionPane.ERROR_MESSAGE);
@@ -470,6 +461,7 @@ public class frmQLLoaiSanPham extends javax.swing.JInternalFrame {
         });
 
         btnResetSearchLSPC.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnResetSearchLSPC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
         btnResetSearchLSPC.setText("Reset");
         btnResetSearchLSPC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -480,6 +472,7 @@ public class frmQLLoaiSanPham extends javax.swing.JInternalFrame {
         btnLuuLSPC.setBackground(new java.awt.Color(13, 110, 253));
         btnLuuLSPC.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnLuuLSPC.setForeground(java.awt.Color.white);
+        btnLuuLSPC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-save-30.png"))); // NOI18N
         btnLuuLSPC.setText("Lưu dữ liệu");
         btnLuuLSPC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -505,7 +498,7 @@ public class frmQLLoaiSanPham extends javax.swing.JInternalFrame {
                         .addComponent(btnSearchLSPC)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                         .addComponent(btnLuuLSPC)
                         .addGap(17, 17, 17))))
         );
@@ -521,7 +514,7 @@ public class frmQLLoaiSanPham extends javax.swing.JInternalFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLuuLSPC)
                     .addComponent(btnResetSearchLSPC))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         jPanel7.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 530, 130));
@@ -704,11 +697,12 @@ public class frmQLLoaiSanPham extends javax.swing.JInternalFrame {
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(187, 54, 137));
-        jLabel9.setText("Tên loại cha");
+        jLabel9.setText("Tên loại sản phẩm");
 
         txtSearchTenLSP.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         btnSearchLSPC1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnSearchLSPC1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/find.png"))); // NOI18N
         btnSearchLSPC1.setText("Tìm kiếm");
         btnSearchLSPC1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -717,6 +711,7 @@ public class frmQLLoaiSanPham extends javax.swing.JInternalFrame {
         });
 
         btnResetSearchLSPC1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnResetSearchLSPC1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
         btnResetSearchLSPC1.setText("Reset");
         btnResetSearchLSPC1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -727,6 +722,7 @@ public class frmQLLoaiSanPham extends javax.swing.JInternalFrame {
         btnLuuLSP.setBackground(new java.awt.Color(13, 110, 253));
         btnLuuLSP.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnLuuLSP.setForeground(java.awt.Color.white);
+        btnLuuLSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-save-30.png"))); // NOI18N
         btnLuuLSP.setText("Lưu dữ liệu");
         btnLuuLSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -757,7 +753,7 @@ public class frmQLLoaiSanPham extends javax.swing.JInternalFrame {
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(txtSearchTenLSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
@@ -831,7 +827,16 @@ public class frmQLLoaiSanPham extends javax.swing.JInternalFrame {
         int row = tbl_LoaiSP.getSelectedRow();
         txtmaLoaiSP.setText(tbl_LoaiSP.getValueAt(row, 0) + "");
         txttenLoaiSP.setText((String) tbl_LoaiSP.getValueAt(row, 1));
-        cbo_LoaiSPCha.setSelectedItem(tbl_LoaiSP.getValueAt(row, 2));
+        Object itemSelectObj = tbl_LoaiSP.getValueAt(row, 2);
+        LoaiSanPhamCha itemSelect = (LoaiSanPhamCha) itemSelectObj;
+        for (int i = 0; i < cbo_LoaiSPCha.getItemCount(); i++) {
+            String cboValue = cbo_LoaiSPCha.getItemAt(i) + "";
+            if (cboValue.equals(itemSelect.getTenLoaiSPCha())) {
+                cbo_LoaiSPCha.setSelectedIndex(i);
+                break;
+            }
+        }
+
     }//GEN-LAST:event_tbl_LoaiSPMouseClicked
 
     private void btnResetLoaiSPChaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetLoaiSPChaActionPerformed
@@ -886,21 +891,22 @@ public class frmQLLoaiSanPham extends javax.swing.JInternalFrame {
         if (txtmaLoaiSPCha.getText().length() == 0) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm cha muốn xóa ở danh sách dưới!");
         } else {
-        }
-        int maLSPCha = Integer.parseInt(txtmaLoaiSPCha.getText());
-        if (LoaiSanPhamChaDAO.isForeignKeyExists(maLSPCha)) {
-            JOptionPane.showMessageDialog(this, "Loại sản phẩm cha đang được sử dụng và không thể xóa!", "Lỗi", JOptionPane.ERROR_MESSAGE);
-        } else {
-            boolean success = LoaiSanPhamChaDAO.deleteById(maLSPCha);
-            if (success) {
-                JOptionPane.showMessageDialog(this, "Xóa thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                ResetLoaiSanPhamCha();
-                LoadCboLoaiSanPhamCha();
-                loadtblLoaiSPCha();
+            int maLSPCha = Integer.parseInt(txtmaLoaiSPCha.getText());
+            if (LoaiSanPhamChaDAO.isForeignKeyExists(maLSPCha)) {
+                JOptionPane.showMessageDialog(this, "Loại sản phẩm cha đang được sử dụng và không thể xóa!", "Lỗi", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Xóa không thành công!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                boolean success = LoaiSanPhamChaDAO.deleteById(maLSPCha);
+                if (success) {
+                    JOptionPane.showMessageDialog(this, "Xóa thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    ResetLoaiSanPhamCha();
+                    LoadCboLoaiSanPhamCha();
+                    loadtblLoaiSPCha();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Xóa không thành công!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
+
     }//GEN-LAST:event_btndeleteLoaiSPChaActionPerformed
 
     private void btnthemLoaiSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemLoaiSPActionPerformed
@@ -997,10 +1003,7 @@ public class frmQLLoaiSanPham extends javax.swing.JInternalFrame {
             }
         } else {
             JOptionPane.showMessageDialog(this, "Dữ liệu không có gì thay đổi!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-
         }
-
-
     }//GEN-LAST:event_btnLuuLSPCActionPerformed
 
     private void btnLuuLSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuLSPActionPerformed
