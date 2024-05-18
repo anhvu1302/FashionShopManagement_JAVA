@@ -1028,10 +1028,10 @@ public class frmQLSanPham extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Vui chọn tồn tại");
                 return;
             }
-            if (SanPhamDao.isTenExists(ten)) {
-                JOptionPane.showMessageDialog(this, "Tên này đã tồn tại. VUi lòng chọn tên khác");
-                return;
-            }
+//            if (SanPhamDao.isTenExists(ten)) {
+//                JOptionPane.showMessageDialog(this, "Tên này đã tồn tại. VUi lòng chọn tên khác");
+//                return;
+//            }
             SanPham sp = new SanPham();
             sp.setIdSanPham(Integer.parseInt(txtMaSP.getText()));
             sp.setTenSanPham(ten);
@@ -1084,14 +1084,14 @@ public class frmQLSanPham extends javax.swing.JInternalFrame {
                 return;
             }
             int barCode = Integer.parseInt(barCodeStr);
-            if (KieuSanPhamDAO.isBarcodeExists(barCode)) {
-                JOptionPane.showMessageDialog(this, "Barcode đã tồn tại. Vui lòng nhập mã khác");
-                return;
-            }
-            if (KieuSanPhamDAO.isKieuSanPhamExists(selected.getIdSanPham(), mau)) {
-                JOptionPane.showMessageDialog(this, "Kiểu sản phẩm này đã tồn tại. Vui lòng đổi kiểu khác.");
-                return;
-            }
+//            if (KieuSanPhamDAO.isBarcodeExists(barCode)) {
+//                JOptionPane.showMessageDialog(this, "Barcode đã tồn tại. Vui lòng nhập mã khác");
+//                return;
+//            }
+//            if (KieuSanPhamDAO.isKieuSanPhamExists(selected.getIdSanPham(), mau)) {
+//                JOptionPane.showMessageDialog(this, "Kiểu sản phẩm này đã tồn tại. Vui lòng đổi kiểu khác.");
+//                return;
+//            }
             KieuSanPham ksp = new KieuSanPham();
             ksp.setIdKieuSanPham(Long.parseLong(txtMaKSP.getText()));
             ksp.setBarCode(barCode);
@@ -1099,7 +1099,7 @@ public class frmQLSanPham extends javax.swing.JInternalFrame {
             ksp.setMau(mau);
             ksp.setAnhSP(anhUrl);
             ksp.setSize(size);
-            boolean result = KieuSanPhamDAO.add(ksp);
+            boolean result = KieuSanPhamDAO.updateById(ksp);
             if (result) {
                 JOptionPane.showMessageDialog(this, "Cập nhật kiểu sản phẩm thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                 ArrayList<KieuSanPham> lsdKSP = KieuSanPhamDAO.getByIdSanPham(selected.getIdSanPham());

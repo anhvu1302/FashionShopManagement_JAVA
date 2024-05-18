@@ -59,7 +59,7 @@ public class KieuSanPhamDAO {
 
     public static boolean updateById(KieuSanPham ksp) {
         boolean kq = false;
-        String sql = String.format("UPDATE KieuSanPham SET BarCode= %d, IdLoaiSP = %d, Mau = N'%s', AnhSP='%s', Size=N'%s' WHERE IdKieuSanPham = %d", ksp.getBarCode(), ksp.getIdSanPham(), ksp.getMau(), ksp.getAnhSP(), ksp.getSize(), ksp.getIdKieuSanPham());
+        String sql = String.format("UPDATE KieuSanPham SET BarCode= %d, IdSanPham = %d, Mau = N'%s', AnhSP='%s', Size=N'%s' WHERE IdKieuSanPham = %d", ksp.getBarCode(), ksp.getIdSanPham(), ksp.getMau(), ksp.getAnhSP(), ksp.getSize(), ksp.getIdKieuSanPham());
         SQLServerDataProvider provider = new SQLServerDataProvider();
         provider.open();
         int n = provider.executeUpdate(sql);
