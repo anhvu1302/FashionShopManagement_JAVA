@@ -234,7 +234,7 @@ INSERT INTO KieuSanPham VALUES(600001,1,N'trắng', 'product_img1.jpg', 'M|L',10
 INSERT INTO KieuSanPham VALUES(600002,1,N'đen', 'product_img1_den.jpg', 'M|L',100);
 INSERT INTO KieuSanPham VALUES(600003,2,N'trắng', 'product_img2.jpg','S|M|L|XL|XXL',100);
 INSERT INTO KieuSanPham VALUES(600004,2,N'xanh tím than', 'product_img2_xanhtimthan.jpg','S|M|L|XL|XXL',100);
-INSERT INTO KieuSanPham VALUES(600005,3,N'kem','product_img3.jpg|', 'S|M|L',100);
+INSERT INTO KieuSanPham VALUES(600005,3,N'kem','product_img3.jpg', 'S|M|L',100);
 INSERT INTO KieuSanPham VALUES(600006,3,N'đỏ','product_img3_do.jpg', 'S|M|L',100);
 INSERT INTO KieuSanPham VALUES(600007,4,N'đen', 'product_img4.jpg', '38|39|40|41|42|43',100);   
 INSERT INTO KieuSanPham VALUES(600008,5,N'be', 'product_img5.jpg', 'M|L',100);

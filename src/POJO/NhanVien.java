@@ -4,7 +4,6 @@
  */
 package POJO;
 
-import java.util.Date;
 
 public class NhanVien {
 
@@ -13,13 +12,14 @@ public class NhanVien {
     private String matKhau;
     private int idVaiTro;
     private String tenNhanVien;
-    private Date ngaySinh;
+    private String ngaySinh;
     private String gioiTinh;
     private String diaChi;
     private String soDienThoai;
     private String email;
     private boolean tonTai;
     private boolean cam;
+    private VaiTro vaitro;
 
     public NhanVien() {
     }
@@ -39,7 +39,7 @@ public class NhanVien {
         this.cam = nv.cam;
     }
 
-    public NhanVien(int idNhanVien, String tenTaiKhoan, String matKhau, int idVaiTro, String tenNhanVien, Date ngaySinh, String gioiTinh, String diaChi, String soDienThoai, String email, boolean tonTai, boolean cam) {
+    public NhanVien(int idNhanVien, String tenTaiKhoan, String matKhau, int idVaiTro, String tenNhanVien, String ngaySinh, String gioiTinh, String diaChi, String soDienThoai, String email, boolean tonTai, boolean cam) {
         this.idNhanVien = idNhanVien;
         this.tenTaiKhoan = tenTaiKhoan;
         this.matKhau = matKhau;
@@ -52,6 +52,22 @@ public class NhanVien {
         this.email = email;
         this.tonTai = tonTai;
         this.cam = cam;
+    }
+
+    public NhanVien(int idNhanVien, String tenTaiKhoan, String matKhau, int idVaiTro, String tenNhanVien, String ngaySinh, String gioiTinh, String diaChi, String soDienThoai, String email, boolean tonTai, boolean cam, VaiTro vaitro) {
+        this.idNhanVien = idNhanVien;
+        this.tenTaiKhoan = tenTaiKhoan;
+        this.matKhau = matKhau;
+        this.idVaiTro = idVaiTro;
+        this.tenNhanVien = tenNhanVien;
+        this.ngaySinh = ngaySinh;
+        this.gioiTinh = gioiTinh;
+        this.diaChi = diaChi;
+        this.soDienThoai = soDienThoai;
+        this.email = email;
+        this.tonTai = tonTai;
+        this.cam = cam;
+        this.vaitro = vaitro;
     }
 
     public int getIdNhanVien() {
@@ -94,11 +110,11 @@ public class NhanVien {
         this.tenNhanVien = tenNhanVien;
     }
 
-    public Date getNgaySinh() {
+    public String getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(Date ngaySinh) {
+    public void setNgaySinh(String ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 
@@ -150,4 +166,15 @@ public class NhanVien {
         this.cam = cam;
     }
 
+    public VaiTro getVaitro() {
+        return vaitro;
+    }
+
+    public void setVaitro(VaiTro vaitro) {
+        this.vaitro = vaitro;
+    }
+    @Override
+    public String toString(){
+        return tenNhanVien;
+    }
 }

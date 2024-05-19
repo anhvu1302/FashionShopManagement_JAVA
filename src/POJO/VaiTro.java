@@ -4,9 +4,9 @@
  */
 package POJO;
 
-
 public class VaiTro {
-    private int idVaiTro ;
+
+    private int idVaiTro;
     private String tenVaiTro;
 
     public VaiTro(int idVaiTro, String tenVaiTro) {
@@ -32,5 +32,9 @@ public class VaiTro {
     public void setTenVaiTro(String tenVaiTro) {
         this.tenVaiTro = tenVaiTro;
     }
-    
+
+    @Override
+    public String toString() {
+        return tenVaiTro;
+    }
 }
