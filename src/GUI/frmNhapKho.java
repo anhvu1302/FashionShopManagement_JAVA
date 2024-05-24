@@ -4,6 +4,12 @@
  */
 package GUI;
 
+import DAO.HoaDonNhapKhoDAO;
+import POJO.HoaDonNhapKho;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Nah nah
@@ -13,8 +19,30 @@ public class frmNhapKho extends javax.swing.JInternalFrame {
     /**
      * Creates new form frmNhapKho
      */
+    DefaultTableModel dtmHDNK = new DefaultTableModel();
     public frmNhapKho() {
         initComponents();
+        String[] tieuDe = {"Mã hoá đơn nhập kho","Ngày nhập", "Mã nhân viên"};
+        dtmHDNK.setColumnIdentifiers(tieuDe);
+        
+        loadtblHoaDonNhapKho();
+    }
+    private void loadtblHoaDonNhapKho() {
+
+        ArrayList<HoaDonNhapKho> dsHDNK = HoaDonNhapKhoDAO.getAll();
+        setHoaDonNhapKhoModel(dsHDNK);
+
+    } 
+    private void setHoaDonNhapKhoModel(ArrayList<HoaDonNhapKho> dsHDNK){
+        dtmHDNK.setRowCount(0);
+        for(HoaDonNhapKho hd: dsHDNK){
+            Vector<Object>  vec = new Vector<>();
+            vec.add(hd.getIdHoaDonNhapKho());
+            vec.add(hd.getNgayNhap());
+            vec.add(hd.getIdNhanVien());
+            dtmHDNK.addRow(vec);
+        }
+        tbl_HoaDonNhapKho.setModel(dtmHDNK);
     }
 
     /**
@@ -74,6 +102,7 @@ public class frmNhapKho extends javax.swing.JInternalFrame {
         jLabel4.setText("Mã nhân viên");
 
         txtmaNV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtmaNV.setEnabled(false);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(187, 54, 137));
@@ -183,8 +212,8 @@ public class frmNhapKho extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,8 +358,8 @@ public class frmNhapKho extends javax.swing.JInternalFrame {
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(114, 114, 114)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(115, 115, 115)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(9, 9, 9)
@@ -368,7 +397,7 @@ public class frmNhapKho extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnThemChiTietNhapKhoActionPerformed
 
     private void btnLapHoaDonNhapKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLapHoaDonNhapKhoActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnLapHoaDonNhapKhoActionPerformed
 
 

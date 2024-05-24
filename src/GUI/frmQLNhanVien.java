@@ -22,8 +22,8 @@ public class frmQLNhanVien extends javax.swing.JInternalFrame {
 
     DefaultTableModel dtmNV = new DefaultTableModel();
 
-    ArrayList<NhanVien> lstDeleteNV = new ArrayList<>();
-    ArrayList<NhanVien> lstUpdateNV = new ArrayList<>();
+//    ArrayList<NhanVien> lstDeleteNV = new ArrayList<>();
+//    ArrayList<NhanVien> lstUpdateNV = new ArrayList<>();
 
     public frmQLNhanVien() {
         initComponents();

@@ -6,6 +6,9 @@ package GUI;
 
 import DAO.NhanVienDAO;
 import POJO.NhanVien;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -18,16 +21,16 @@ public class frmTrangCaNhan extends javax.swing.JInternalFrame {
      */
     public frmTrangCaNhan() {
         initComponents();
-        String tentk="";
-        tentk =frmDangNhap.username;
-        
+        String tentk = "";
+        tentk = frmDangNhap.username;
+
         NhanVien nv = NhanVienDAO.getNhanVienForShow(tentk);
-        txtmaNV.setText(nv.getIdNhanVien()+"");
+        txtmaNV.setText(nv.getIdNhanVien() + "");
         txtTenNV.setText(nv.getTenNhanVien());
         txtmail.setText(nv.getEmail());
         txtsdt.setText(nv.getSoDienThoai());
-        txtVaiTro.setText(nv.getVaitro()+"");
-        
+        txtVaiTro.setText(nv.getVaitro() + "");
+
     }
 
     /**
@@ -180,10 +183,13 @@ public class frmTrangCaNhan extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        this.setVisible(false);
-        
-        frmDangNhap frm = new frmDangNhap();
-        frm.setVisible(true);
+        // Đóng frmMain
+        JFrame frmMain = (JFrame) SwingUtilities.getWindowAncestor(this);
+        frmMain.dispose();
+
+        // Mở lại màn hình đăng nhập
+        frmDangNhap dn = new frmDangNhap();
+        dn.setVisible(true);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
 

@@ -9,6 +9,10 @@ import javax.swing.JInternalFrame;
 
 public class frmMain extends javax.swing.JFrame {
 
+    static Object getDesktopPane() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     /**
      * Creates new form Menu
      */
