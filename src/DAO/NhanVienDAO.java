@@ -169,6 +169,50 @@ public class NhanVienDAO {
         return dsNV;
     }
 
+    public static ArrayList<NhanVien> searchNhanVien(String searchValue) {
+        ArrayList<NhanVien> dsNV = new ArrayList<NhanVien>();
+        SQLServerDataProvider provider = new SQLServerDataProvider();
+        try {
+            // Xử lý giá trị searchValue để tránh SQL Injection
+            searchValue = searchValue.replace("'", "''");
+
+            // Tạo câu lệnh SQL với giá trị tìm kiếm
+            String sqlSelect = String.format(
+                    "SELECT IdNhanVien, TenTaiKhoan, MatKhau, nv.IdVaiTro, vt.TenVaiTro, TenNhanVien, NgaySinh, GioiTinh, DiaChi, SoDienThoai, Email, TonTai, Cam "
+                    + "FROM NhanVien nv "
+                    + "INNER JOIN VaiTro vt ON nv.IdVaiTro = vt.IdVaiTro "
+                    + "WHERE TenNhanVien LIKE N'%%%s%%' OR TenTaiKhoan = '%s' OR SoDienThoai = '%s' "
+                    + "ORDER BY IdNhanVien",
+                    searchValue, searchValue, searchValue
+            );
+            provider.open();
+            ResultSet rs = provider.executeQuery(sqlSelect);
+            while (rs.next()) {
+                NhanVien nv = new NhanVien();
+                nv.setIdNhanVien(rs.getInt(1));
+                nv.setTenTaiKhoan(rs.getString(2));
+                nv.setMatKhau(rs.getString(3));
+                //nv.setIdVaiTro(rs.getInt(4));
+                VaiTro vt = new VaiTro(rs.getInt(4), rs.getString(5));
+                nv.setVaitro(vt);
+                nv.setTenNhanVien(rs.getString(6));
+                nv.setNgaySinh(rs.getString(7));
+                nv.setGioiTinh(rs.getString(8));
+                nv.setDiaChi(rs.getString(9));
+                nv.setSoDienThoai(rs.getString(10));
+                nv.setEmail(rs.getString(11));
+                nv.setTonTai(rs.getBoolean(12));
+                nv.setCam(rs.getBoolean(13));
+                dsNV.add(nv);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            provider.close();
+        }
+        return dsNV;
+    }
+
     public static boolean add(NhanVien nv) {
         boolean kq = false;
 //        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

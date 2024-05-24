@@ -33,16 +33,16 @@ public class frmMain extends javax.swing.JFrame {
         sanPhamMenu = new javax.swing.JMenu();
         mnuQLSP = new javax.swing.JMenuItem();
         mnuQPLoaiSP = new javax.swing.JMenuItem();
-        khachHangMenu = new javax.swing.JMenu();
-        mnuQLKhachHang = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         hoaDonMenu = new javax.swing.JMenu();
         mnuQLHoaDon = new javax.swing.JMenuItem();
         mnuThanhToan = new javax.swing.JMenuItem();
+        khachHangMenu = new javax.swing.JMenu();
+        mnuQLKhachHang = new javax.swing.JMenuItem();
         nhanVienMenu = new javax.swing.JMenu();
         mnuQLNhanVien = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        contentMenuItem = new javax.swing.JMenuItem();
-        aboutMenuItem = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,20 +86,16 @@ public class frmMain extends javax.swing.JFrame {
         });
         sanPhamMenu.add(mnuQPLoaiSP);
 
-        menuBar.add(sanPhamMenu);
-
-        khachHangMenu.setText("Khách hàng");
-
-        mnuQLKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/customer.png"))); // NOI18N
-        mnuQLKhachHang.setText("Quản lý khách hàng");
-        mnuQLKhachHang.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/warehouse.png"))); // NOI18N
+        jMenuItem1.setText("Nhập kho");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuQLKhachHangActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        khachHangMenu.add(mnuQLKhachHang);
+        sanPhamMenu.add(jMenuItem1);
 
-        menuBar.add(khachHangMenu);
+        menuBar.add(sanPhamMenu);
 
         hoaDonMenu.setText("Hoá đơn");
 
@@ -123,6 +119,19 @@ public class frmMain extends javax.swing.JFrame {
 
         menuBar.add(hoaDonMenu);
 
+        khachHangMenu.setText("Khách hàng");
+
+        mnuQLKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/customer.png"))); // NOI18N
+        mnuQLKhachHang.setText("Quản lý khách hàng");
+        mnuQLKhachHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuQLKhachHangActionPerformed(evt);
+            }
+        });
+        khachHangMenu.add(mnuQLKhachHang);
+
+        menuBar.add(khachHangMenu);
+
         nhanVienMenu.setText("Nhân viên");
 
         mnuQLNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/staff.png"))); // NOI18N
@@ -136,18 +145,13 @@ public class frmMain extends javax.swing.JFrame {
 
         menuBar.add(nhanVienMenu);
 
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("Help");
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/profile.png"))); // NOI18N
+        jMenu1.setMaximumSize(new java.awt.Dimension(40, 30));
+        menuBar.add(jMenu1);
 
-        contentMenuItem.setMnemonic('c');
-        contentMenuItem.setText("Contents");
-        helpMenu.add(contentMenuItem);
-
-        aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("About");
-        helpMenu.add(aboutMenuItem);
-
-        menuBar.add(helpMenu);
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logout.png"))); // NOI18N
+        jMenu2.setText("Đăng xuất");
+        menuBar.add(jMenu2);
 
         setJMenuBar(menuBar);
 
@@ -155,11 +159,11 @@ public class frmMain extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
         );
 
         pack();
@@ -208,6 +212,11 @@ public class frmMain extends javax.swing.JFrame {
         showFrm(frm);
     }//GEN-LAST:event_mnuQLNhanVienActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        frmNhapKho frm = new frmNhapKho();
+        showFrm(frm);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -245,12 +254,12 @@ public class frmMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem aboutMenuItem;
-    private javax.swing.JMenuItem contentMenuItem;
     private javax.swing.JMenu dashBoardMenu;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu helpMenu;
     private javax.swing.JMenu hoaDonMenu;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu khachHangMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem mnuQLHoaDon;
