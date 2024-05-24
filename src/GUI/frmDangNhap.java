@@ -9,18 +9,17 @@ import POJO.NhanVien;
 import Utils.PasswordHashing;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Nah nah
- */
+
 public class frmDangNhap extends javax.swing.JFrame {
 
     /**
      * Creates new form frmDangNhap
      */
+    public static String username;
     public frmDangNhap() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -267,6 +266,7 @@ public class frmDangNhap extends javax.swing.JFrame {
         // TODO add your handling code here:
         String tenTK = txtTenTK.getText();
         String password = txtMatKhau.getText();
+        username =tenTK;
         NhanVien nv = NhanVienDAO.getNhanVienByTenTk(tenTK);
         if (PasswordHashing.verifyPassword(password, nv.getMatKhau())) {
             if (nv.isTonTai()) {

@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
 public class frmMain extends javax.swing.JFrame {
@@ -30,6 +31,7 @@ public class frmMain extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         dashBoardMenu = new javax.swing.JMenu();
         mnuThongKe = new javax.swing.JMenuItem();
+        mnuProfile = new javax.swing.JMenuItem();
         sanPhamMenu = new javax.swing.JMenu();
         mnuQLSP = new javax.swing.JMenuItem();
         mnuQPLoaiSP = new javax.swing.JMenuItem();
@@ -41,8 +43,6 @@ public class frmMain extends javax.swing.JFrame {
         mnuQLKhachHang = new javax.swing.JMenuItem();
         nhanVienMenu = new javax.swing.JMenu();
         mnuQLNhanVien = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,6 +60,16 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
         dashBoardMenu.add(mnuThongKe);
+
+        mnuProfile.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        mnuProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/profile.png"))); // NOI18N
+        mnuProfile.setText("Tài khoản");
+        mnuProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuProfileActionPerformed(evt);
+            }
+        });
+        dashBoardMenu.add(mnuProfile);
 
         menuBar.add(dashBoardMenu);
 
@@ -145,14 +155,6 @@ public class frmMain extends javax.swing.JFrame {
 
         menuBar.add(nhanVienMenu);
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/profile.png"))); // NOI18N
-        jMenu1.setMaximumSize(new java.awt.Dimension(40, 30));
-        menuBar.add(jMenu1);
-
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logout.png"))); // NOI18N
-        jMenu2.setText("Đăng xuất");
-        menuBar.add(jMenu2);
-
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -217,6 +219,17 @@ public class frmMain extends javax.swing.JFrame {
         showFrm(frm);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+//    private void showFram(JFrame newframe) {
+//        this.desktopPane.removeAll();
+//        newframe.setVisible(true);
+//        newframe.setBounds(0, 0, desktopPane.getWidth(), desktopPane.getHeight());
+//        //this.desktopPane.add(newframe);
+//    }
+    private void mnuProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuProfileActionPerformed
+        frmTrangCaNhan frm = new frmTrangCaNhan();
+        showFrm(frm);
+    }//GEN-LAST:event_mnuProfileActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -257,11 +270,10 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JMenu dashBoardMenu;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu hoaDonMenu;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu khachHangMenu;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem mnuProfile;
     private javax.swing.JMenuItem mnuQLHoaDon;
     private javax.swing.JMenuItem mnuQLKhachHang;
     private javax.swing.JMenuItem mnuQLNhanVien;
