@@ -83,10 +83,10 @@ public class KieuSanPhamDAO {
         return success;
     }
 
-    public static boolean isKieuSanPhamExists(long id, String mau) {
+    public static boolean isKieuSanPhamExists(long id, String mau, String size) {
         SQLServerDataProvider provider = new SQLServerDataProvider();
         try {
-            String sqlSelect = String.format("SELECT * FROM KieuSanPham WHERE IdSanPham = %d AND Mau = N'%s'", id, mau);
+            String sqlSelect = String.format("SELECT * FROM KieuSanPham WHERE IdSanPham = %d AND Mau = N'%s'AND Size = '%s'", id, mau, size);
             provider.open();
             ResultSet rs = provider.executeQuery(sqlSelect);
             if (rs.next()) {
@@ -127,12 +127,12 @@ public class KieuSanPhamDAO {
 
             ResultSet rs1 = provider.executeQuery(sqlSelect1);
             if (rs1.next()) {
-                return true;  
+                return true;
             }
 
             ResultSet rs2 = provider.executeQuery(sqlSelect2);
             if (rs2.next()) {
-                return true;  
+                return true;
             }
         } catch (Exception e) {
             e.printStackTrace();

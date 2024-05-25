@@ -6,19 +6,21 @@ package POJO;
 
 import java.util.Date;
 
-
 public class HoaDonNhapKho {
+
     private int idHoaDonNhapKho;
-    private Date ngayNhap;
     private int idNhanVien;
+    private long tongTien;
+    private Date ngayNhap;
 
     public HoaDonNhapKho() {
     }
 
-    public HoaDonNhapKho(int idHoaDonNhapKho, Date ngayNhap, int idNhanVien) {
+    public HoaDonNhapKho(int idHoaDonNhapKho, int idNhanVien, long tongTien, Date ngayNhap) {
         this.idHoaDonNhapKho = idHoaDonNhapKho;
-        this.ngayNhap = ngayNhap;
         this.idNhanVien = idNhanVien;
+        this.tongTien = tongTien;
+        this.ngayNhap = ngayNhap;
     }
 
     public int getIdHoaDonNhapKho() {
@@ -29,6 +31,22 @@ public class HoaDonNhapKho {
         this.idHoaDonNhapKho = idHoaDonNhapKho;
     }
 
+    public int getIdNhanVien() {
+        return idNhanVien;
+    }
+
+    public void setIdNhanVien(int idNhanVien) {
+        this.idNhanVien = idNhanVien;
+    }
+
+    public long getTongTien() {
+        return tongTien;
+    }
+
+    public void setTongTien(long tongTien) {
+        this.tongTien = tongTien;
+    }
+
     public Date getNgayNhap() {
         return ngayNhap;
     }
@@ -37,23 +55,4 @@ public class HoaDonNhapKho {
         this.ngayNhap = ngayNhap;
     }
 
-    public long getIdNhanVien() {
-        return idNhanVien;
-    }
-
-    public void setIdNhanVien(int idNhanVien) {
-        this.idNhanVien = idNhanVien;
-    }
-
-    public void getIdHoaDonNhapKho(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public void getNgayNhap(java.sql.Date date) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public void getIdNhanVien(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
