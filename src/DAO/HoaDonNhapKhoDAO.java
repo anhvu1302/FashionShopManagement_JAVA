@@ -18,9 +18,10 @@ public class HoaDonNhapKhoDAO {
             ResultSet rs = provider.executeQuery(sql);
             while (rs.next()) {                
                 HoaDonNhapKho hd = new HoaDonNhapKho();
-                hd.getIdHoaDonNhapKho(rs.getInt(1));
-                hd.getNgayNhap(rs.getDate(2));
-                hd.getIdNhanVien(rs.getInt(3));
+                hd.setIdHoaDonNhapKho(rs.getInt(1));
+                hd.setIdNhanVien(rs.getInt(2));
+                hd.setTongTien(rs.getLong(3));
+                hd.setNgayNhap(rs.getDate(4));
                 dsHDNK.add(hd);
             }
         }catch(Exception e){

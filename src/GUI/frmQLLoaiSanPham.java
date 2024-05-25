@@ -27,6 +27,7 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *
@@ -57,6 +58,9 @@ public class frmQLLoaiSanPham extends javax.swing.JInternalFrame {
 
     public frmQLLoaiSanPham() {
         initComponents();
+        
+        AutoCompleteDecorator.decorate(cbo_LoaiSPCha);
+        
         String[] tieuDe = {"Mã loại sản phẩm cha", "Tên loại sản phẩm cha"};
         dtmLSPC.setColumnIdentifiers(tieuDe);
         String[] tieuDe1 = {"Mã loại sản phẩm", "Tên loại sản phẩm", "Loại sản phẩm cha"};

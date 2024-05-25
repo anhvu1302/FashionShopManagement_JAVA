@@ -7,7 +7,7 @@ package POJO;
 public class KieuSanPham {
 
     private long idKieuSanPham;
-    private int barCode;
+    private long barCode;
     private long idSanPham;
     private String mau;
     private String anhSP;
@@ -18,7 +18,7 @@ public class KieuSanPham {
     public KieuSanPham() {
     }
 
-    public KieuSanPham(long idKieuSanPham, int barCode, long idSanPham, String mau, String anhSP, String size, int soLuongTonKho, SanPham sanPham) {
+    public KieuSanPham(long idKieuSanPham, long barCode, long idSanPham, String mau, String anhSP, String size, int soLuongTonKho, SanPham sanPham) {
         this.idKieuSanPham = idKieuSanPham;
         this.barCode = barCode;
         this.idSanPham = idSanPham;
@@ -37,11 +37,11 @@ public class KieuSanPham {
         this.idKieuSanPham = idKieuSanPham;
     }
 
-    public int getBarCode() {
+    public long getBarCode() {
         return barCode;
     }
 
-    public void setBarCode(int barCode) {
+    public void setBarCode(long barCode) {
         this.barCode = barCode;
     }
 

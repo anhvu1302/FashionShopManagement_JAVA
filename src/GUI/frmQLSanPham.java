@@ -59,7 +59,10 @@ public class frmQLSanPham extends javax.swing.JInternalFrame {
 
     public frmQLSanPham() {
         initComponents();
+        
         AutoCompleteDecorator.decorate(cboLoaiSanPham);
+        AutoCompleteDecorator.decorate(cboSearchSPByLSP);
+        
         LoadCboLoaiSanPham();
         LoadCboSanPham();
 

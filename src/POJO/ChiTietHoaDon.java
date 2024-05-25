@@ -4,21 +4,31 @@
  */
 package POJO;
 
-
 public class ChiTietHoaDon {
+
     private int idHoaDon;
-    private int idKieuSanPham;
+    private long idKieuSanPham;
     private int soLuong;
     private long donGia;
+    private KieuSanPham kieuSanPham;
 
     public ChiTietHoaDon() {
     }
 
-    public ChiTietHoaDon(int idHoaDon, int idKieuSanPham, int soLuong, long donGia) {
+    public ChiTietHoaDon(ChiTietHoaDon cthd) {
+        this.idHoaDon = cthd.idHoaDon;
+        this.idKieuSanPham = cthd.idKieuSanPham;
+        this.soLuong = cthd.soLuong;
+        this.donGia = cthd.donGia;
+        this.kieuSanPham = cthd.kieuSanPham;
+    }
+
+    public ChiTietHoaDon(int idHoaDon, long idKieuSanPham, int soLuong, long donGia, KieuSanPham kieuSanPham) {
         this.idHoaDon = idHoaDon;
         this.idKieuSanPham = idKieuSanPham;
         this.soLuong = soLuong;
         this.donGia = donGia;
+        this.kieuSanPham = kieuSanPham;
     }
 
     public int getIdHoaDon() {
@@ -29,11 +39,11 @@ public class ChiTietHoaDon {
         this.idHoaDon = idHoaDon;
     }
 
-    public int getIdKieuSanPham() {
+    public long getIdKieuSanPham() {
         return idKieuSanPham;
     }
 
-    public void setIdKieuSanPham(int idKieuSanPham) {
+    public void setIdKieuSanPham(long idKieuSanPham) {
         this.idKieuSanPham = idKieuSanPham;
     }
 
@@ -52,6 +62,13 @@ public class ChiTietHoaDon {
     public void setDonGia(long donGia) {
         this.donGia = donGia;
     }
-    
-    
+
+    public KieuSanPham getKieuSanPham() {
+        return kieuSanPham;
+    }
+
+    public void setKieuSanPham(KieuSanPham kieuSanPham) {
+        this.kieuSanPham = kieuSanPham;
+    }
+
 }

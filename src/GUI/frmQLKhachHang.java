@@ -455,7 +455,8 @@ public class frmQLKhachHang extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập giá trị tìm kiếm!", "Thông báo", JOptionPane.WARNING_MESSAGE);
             return;
         } else {
-            ArrayList<KhachHang> lst = KhachHangDAO.getBySDT(searchValue);
+            ArrayList<KhachHang> lst = new ArrayList<>();
+            lst.add(KhachHangDAO.getBySDT(searchValue));
             setKhachHangModel(lst);
         }
 

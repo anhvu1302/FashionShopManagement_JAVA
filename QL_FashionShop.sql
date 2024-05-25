@@ -245,34 +245,34 @@ CREATE TABLE KieuSanPham (
   CONSTRAINT FK_KieuSanPham_SanPham FOREIGN KEY (IdSanPham) REFERENCES SanPham(IdSanPham),
 );
 SET IDENTITY_INSERT KieuSanPham ON 
-INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(1,314794,1,N'Trắng', 'product_img1.jpg', 'M',100);
+INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(1,111111,1,N'Trắng', 'product_img1.jpg', 'M',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(2,339356,1,N'Trắng', 'product_img1.jpg', 'L',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(3,789424,1,N'Trắng', 'product_img1.jpg', 'S',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(4,155869,1,N'Đen', 'product_img1_den.jpg', 'L',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(5,666952,1,N'Đen', 'product_img1_den.jpg', 'XL',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(6,862686,2,N'Trắng', 'product_img2.jpg','S',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(7,646950,2,N'Trắng', 'product_img2.jpg','M',100);
-INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(8,147991,2,N'Trắng', 'product_img2.jpg','L',100);
+INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(8,222222,2,N'Trắng', 'product_img2.jpg','L',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(9,573868,2,N'Trắng', 'product_img2.jpg','XL',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(10,361181,2,N'Xanh tím than', 'product_img2_xanhtimthan.jpg','L',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(11,103661,2,N'Xanh tím than', 'product_img2_xanhtimthan.jpg','XL',100);
-INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(12,601054,3,N'Kem','product_img3.jpg', 'S',100);
+INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(12,333333,3,N'Kem','product_img3.jpg', 'S',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(13,845222,3,N'Kem','product_img3.jpg', 'M',100);
-INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(14,690691,3,N'Đỏ','product_img3_do.jpg', 'S',100);
+INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(14,444444,3,N'Đỏ','product_img3_do.jpg', 'S',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(15,844875,3,N'Đỏ','product_img3_do.jpg', 'M',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(16,638335,4,N'Đen', 'product_img4.jpg', '38',100);  
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(17,730138,4,N'Đen', 'product_img4.jpg', '39',100);  
-INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(18,514392,4,N'Đen', 'product_img4.jpg', '40',100);  
+INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(18,555555,4,N'Đen', 'product_img4.jpg', '40',100);  
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(19,411151,4,N'Đen', 'product_img4.jpg', '41',100);  
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(20,390097,5,N'Be', 'product_img5.jpg', 'M',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(21,493184,5,N'Be', 'product_img5.jpg', 'L',100);
-INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(22,595966,5,N'Đen', 'product_img5_den.jpg', 'M',100);
+INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(22,666666,5,N'Đen', 'product_img5_den.jpg', 'M',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(23,919125,5,N'Đen', 'product_img5_den.jpg', 'L',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(24,388590,6,N'Trắng viền xám', 'product_img6.jpg', 'S',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(25,247508,6,N'Trắng viền xám', 'product_img6.jpg', 'L',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(26,339344,6,N'Trắng viền xám', 'product_img6.jpg', 'XL',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(27,481300,7,N'Be', 'product_img7.jpg', 'SL',100);
-INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(28,539539,7,N'Be', 'product_img7.jpg', 'M',100);
+INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(28,777777,7,N'Be', 'product_img7.jpg', 'M',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(29,414352,7,N'Be', 'product_img7.jpg', 'L',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(30,575627,7,N'Nâu','product_img7_nau.jpg','S',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(31,367748,7,N'Nâu','product_img7_nau.jpg','M',100);
@@ -281,7 +281,7 @@ INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, So
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(34,977945,7,N'Đen', 'product_img7_den.jpg', 'M',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(35,201522,7,N'Đen', 'product_img7_den.jpg', 'L',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(36,353427,8,N'Xanh lá', 'product_img8.jpg', '36',100);
-INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(37,111254,8,N'Xanh lá', 'product_img8.jpg', '37',100);
+INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(37,888888,8,N'Xanh lá', 'product_img8.jpg', '37',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(38,885448,8,N'Xanh lá', 'product_img8.jpg', '38',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(39,518719,8,N'Xanh lá', 'product_img8.jpg', '39',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(40,349418,8,N'Xanh lá', 'product_img8.jpg', '40',100);
@@ -315,7 +315,7 @@ INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, So
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(68,824906,18,N'Trắng','product_img18.jpg', 'S',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(69,660646,18,N'Trắng','product_img18.jpg', 'M',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(70,400861,18,N'Trắng','product_img18.jpg', 'L',100);
-INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(71,179264,19,N'Đen','product_img19.jpg', 'S',100);
+INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(71,999999,19,N'Đen','product_img19.jpg', 'S',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(72,323084,19,N'Đen','product_img19.jpg', 'M',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(73,148621,19,N'Đen','product_img19.jpg', 'L',100);
 INSERT INTO KieuSanPham (IdKieuSanPham, BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(74,455188,20,N'Trắng','product_img20.jpg', 'S',100);
@@ -357,9 +357,9 @@ CREATE TABLE ChiTietHoaDonNhapKho (
 CREATE TABLE HoaDon (
   IdHoaDon BIGINT IDENTITY(1,1),
   IdNhanVien BIGINT NOT NULL,
-  IdKhachHang  BIGINT NOT NULL, 
-  SoDienThoai VARCHAR(10),
+  IdKhachHang  BIGINT, 
   TongTien BIGINT NOT NULL,
+  DiemSuDung BIGINT NOT NULL,
   PhuongThucThanhToan NVARCHAR(30) NOT NULL,
   NgayXuatHD DATETIME NOT NULL,
   CONSTRAINT PK_HoaDon PRIMARY KEY(IdHoaDon),

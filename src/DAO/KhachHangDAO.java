@@ -34,22 +34,21 @@ public class KhachHangDAO {
         return dsKH;
     }
 
-    public static ArrayList<KhachHang> getBySDT(String sdt) {
-        ArrayList<KhachHang> lst = new ArrayList<>();
+    public static KhachHang getBySDT(String sdt) {
+        KhachHang kh = null;
         SQLServerDataProvider provider = new SQLServerDataProvider();
         try {
-            String sql = String.format("SELECT * FROM KhachHang WHERE SoDienThoai = '%s' ",sdt);
+            String sql = String.format("SELECT IdKhachHang,TenKhachHang,GioiTinh,SoDienThoai,Email,Diem FROM KhachHang WHERE SoDienThoai = '%s' ", sdt);
             provider.open();
             ResultSet rs = provider.executeQuery(sql);
             while (rs.next()) {
-                KhachHang kh = new KhachHang();
-                kh.setIdKhachHang(rs.getInt(1));
-                kh.setTenKhachHang(rs.getString(2));
-                kh.setGioiTinh(rs.getString(3));
-                kh.setSoDienThoai(rs.getString(4));
-                kh.setEmail(rs.getString(5));
-                kh.setDiem(rs.getLong(6));
-                lst.add(kh);
+                kh = new KhachHang();
+                kh.setIdKhachHang(rs.getInt("IdKhachHang"));
+                kh.setTenKhachHang(rs.getString("TenKhachHang"));
+                kh.setGioiTinh(rs.getString("GioiTinh"));
+                kh.setSoDienThoai(rs.getString("SoDienThoai"));
+                kh.setEmail(rs.getString("Email"));
+                kh.setDiem(rs.getLong("Diem"));
             }
             provider.close();
         } catch (Exception e) {
@@ -57,7 +56,7 @@ public class KhachHangDAO {
         } finally {
             provider.close();
         }
-        return lst;
+        return kh;
     }
 
     public static boolean add(KhachHang kh) {
@@ -156,4 +155,19 @@ public class KhachHangDAO {
         }
         return false;
     }
+
+    public static boolean updateDiem(long id, long diem) {
+        String sqlUpdate = String.format("UPDATE KhachHang SET Diem = Diem + %d WHERE IdKhachHang = %d;", diem, id);
+        try {
+            SQLServerDataProvider provider = new SQLServerDataProvider();
+            provider.open();
+            int rowsAffected = provider.executeUpdate(sqlUpdate);
+            provider.close();
+            return rowsAffected > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }

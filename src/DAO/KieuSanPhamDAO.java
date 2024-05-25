@@ -44,6 +44,40 @@ public class KieuSanPhamDAO {
         return dsKieu;
     }
 
+    public static KieuSanPham getByBarcode(long barcode) {
+        KieuSanPham ksp = null;
+        SQLServerDataProvider provider = new SQLServerDataProvider();
+        try {
+            String sql = String.format("SELECT IdKieuSanPham, BarCode, KSP.IdSanPham, Mau, AnhSP, Size, SoLuongTonKho, TenSanPham, GiaBan, GiamGia FROM KieuSanPham KSP INNER JOIN SanPham SP ON KSP.IdSanPham = SP.IdSanPham WHERE BarCode = %d", barcode);
+            provider.open();
+            ResultSet rs = provider.executeQuery(sql);
+            while (rs.next()) {
+                ksp = new KieuSanPham();
+                ksp.setIdKieuSanPham(rs.getLong("IdKieuSanPham"));
+                ksp.setBarCode(rs.getInt("BarCode"));
+                ksp.setIdSanPham(rs.getInt("IdSanPham"));
+                ksp.setMau(rs.getString("Mau"));
+                ksp.setAnhSP(rs.getString("AnhSP"));
+                ksp.setSize(rs.getString("Size"));
+                ksp.setSoLuongTonKho(rs.getInt("SoLuongTonKho"));
+
+                SanPham sp = new SanPham();
+                sp.setIdSanPham(rs.getInt("IdSanPham"));
+                sp.setTenSanPham(rs.getString("TenSanPham"));
+                sp.setGiaBan(rs.getLong("GiaBan"));
+                sp.setGiamGia(rs.getInt("GiamGia"));
+                ksp.setSanPham(sp);
+                return ksp;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            provider.close();
+
+        }
+        return ksp;
+    }
+
     public static boolean add(KieuSanPham ksp) {
         boolean kq = false;
         String sql = String.format("INSERT INTO KieuSanPham(BarCode, IdSanPham, Mau, AnhSP, Size, SoLuongTonKho) VALUES(%d,%d,N'%s','%s',N'%s',0);", ksp.getBarCode(), ksp.getIdSanPham(), ksp.getMau(), ksp.getAnhSP(), ksp.getSize());
