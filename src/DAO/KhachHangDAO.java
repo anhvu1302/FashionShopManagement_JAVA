@@ -19,7 +19,7 @@ public class KhachHangDAO {
             ResultSet rs = provider.executeQuery(sql);
             while (rs.next()) {
                 KhachHang kh = new KhachHang();
-                kh.setIdKhachHang(rs.getInt(1));
+                kh.setIdKhachHang(rs.getLong(1));
                 kh.setTenKhachHang(rs.getString(2));
                 kh.setGioiTinh(rs.getString(3));
                 kh.setSoDienThoai(rs.getString(4));
@@ -43,7 +43,7 @@ public class KhachHangDAO {
             ResultSet rs = provider.executeQuery(sql);
             while (rs.next()) {
                 kh = new KhachHang();
-                kh.setIdKhachHang(rs.getInt("IdKhachHang"));
+                kh.setIdKhachHang(rs.getLong("IdKhachHang"));
                 kh.setTenKhachHang(rs.getString("TenKhachHang"));
                 kh.setGioiTinh(rs.getString("GioiTinh"));
                 kh.setSoDienThoai(rs.getString("SoDienThoai"));
@@ -91,7 +91,7 @@ public class KhachHangDAO {
         return false;
     }
 
-    public static boolean deleteById(int id) {
+    public static boolean deleteById(long id) {
         boolean kq = false;
         String sql = String.format("Delete From KhachHang Where IdKhachHang=%d", id);
         SQLServerDataProvider provider = new SQLServerDataProvider();
@@ -141,7 +141,7 @@ public class KhachHangDAO {
         return result;
     }
 
-    public static boolean isForeignKeyExists(int ma) {
+    public static boolean isForeignKeyExists(long ma) {
         try {
             String sqlSelect = String.format("SELECT * FROM HoaDon WHERE IdKhachHang = %d", ma);
             SQLServerDataProvider provider = new SQLServerDataProvider();

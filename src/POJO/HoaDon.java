@@ -9,16 +9,16 @@ import java.util.Date;
 
 public class HoaDon {
 
-    private int idHoaDon;
-    private int idNhanVien;
-    private int idKhachHang;
+    private long idHoaDon;
+    private long idNhanVien;
+    private long idKhachHang;
     private String phuongThucThanhToan;
     private long tongTien;
     private long diemSuDung;
     private Date ngayXuatHD;
     private ArrayList<ChiTietHoaDon> chiTietHoaDons;
 
-    public HoaDon(int idHoaDon, int idNhanVien, int idKhachHang, String phuongThucThanhToan, long tongTien, long diemSuDung, Date ngayXuatHD) {
+    public HoaDon(long idHoaDon, long idNhanVien, long idKhachHang, String phuongThucThanhToan, long tongTien, long diemSuDung, Date ngayXuatHD) {
         this.idHoaDon = idHoaDon;
         this.idNhanVien = idNhanVien;
         this.idKhachHang = idKhachHang;
@@ -31,27 +31,27 @@ public class HoaDon {
     public HoaDon() {
     }
 
-    public int getIdHoaDon() {
+    public long getIdHoaDon() {
         return idHoaDon;
     }
 
-    public void setIdHoaDon(int idHoaDon) {
+    public void setIdHoaDon(long idHoaDon) {
         this.idHoaDon = idHoaDon;
     }
 
-    public int getIdNhanVien() {
+    public long getIdNhanVien() {
         return idNhanVien;
     }
 
-    public void setIdNhanVien(int idNhanVien) {
+    public void setIdNhanVien(long idNhanVien) {
         this.idNhanVien = idNhanVien;
     }
 
-    public int getIdKhachHang() {
+    public long getIdKhachHang() {
         return idKhachHang;
     }
 
-    public void setIdKhachHang(int idKhachHang) {
+    public void setIdKhachHang(long idKhachHang) {
         this.idKhachHang = idKhachHang;
     }
 

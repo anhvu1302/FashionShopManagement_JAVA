@@ -107,7 +107,7 @@ public class SanPhamDao {
             ResultSet rs = provider.executeQuery(sql);
             while (rs.next()) {
                 SanPham sp = new SanPham();
-                sp.setIdSanPham(rs.getInt(1));
+                sp.setIdSanPham(rs.getLong(1));
                 sp.setTenSanPham(rs.getString(2));
                 sp.setIdLoaiSP(rs.getInt(3));
                 sp.setGiaBan(rs.getLong(4));

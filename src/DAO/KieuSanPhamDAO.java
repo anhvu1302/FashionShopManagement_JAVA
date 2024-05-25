@@ -8,10 +8,6 @@ import POJO.*;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-/**
- *
- * @author VanAnh
- */
 public class KieuSanPhamDAO {
 
     public static ArrayList<KieuSanPham> getByIdSanPham(long id) {

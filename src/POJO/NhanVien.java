@@ -7,7 +7,7 @@ package POJO;
 
 public class NhanVien {
 
-    private int idNhanVien;
+    private long idNhanVien;
     private String tenTaiKhoan;
     private String matKhau;
     private int idVaiTro;
@@ -22,6 +22,11 @@ public class NhanVien {
     private VaiTro vaitro;
 
     public NhanVien() {
+    }
+
+    public NhanVien(long idNhanVien, String tenNhanVien) {
+        this.idNhanVien = idNhanVien;
+        this.tenNhanVien = tenNhanVien;
     }
 
     public NhanVien(NhanVien nv) {
@@ -39,7 +44,7 @@ public class NhanVien {
         this.cam = nv.cam;
     }
 
-    public NhanVien(int idNhanVien, String tenTaiKhoan, String matKhau, int idVaiTro, String tenNhanVien, String ngaySinh, String gioiTinh, String diaChi, String soDienThoai, String email, boolean tonTai, boolean cam) {
+    public NhanVien(long idNhanVien, String tenTaiKhoan, String matKhau, int idVaiTro, String tenNhanVien, String ngaySinh, String gioiTinh, String diaChi, String soDienThoai, String email, boolean tonTai, boolean cam) {
         this.idNhanVien = idNhanVien;
         this.tenTaiKhoan = tenTaiKhoan;
         this.matKhau = matKhau;
@@ -54,7 +59,7 @@ public class NhanVien {
         this.cam = cam;
     }
 
-    public NhanVien(int idNhanVien, String tenTaiKhoan, String matKhau, int idVaiTro, String tenNhanVien, String ngaySinh, String gioiTinh, String diaChi, String soDienThoai, String email, boolean tonTai, boolean cam, VaiTro vaitro) {
+    public NhanVien(long idNhanVien, String tenTaiKhoan, String matKhau, int idVaiTro, String tenNhanVien, String ngaySinh, String gioiTinh, String diaChi, String soDienThoai, String email, boolean tonTai, boolean cam, VaiTro vaitro) {
         this.idNhanVien = idNhanVien;
         this.tenTaiKhoan = tenTaiKhoan;
         this.matKhau = matKhau;
@@ -70,11 +75,11 @@ public class NhanVien {
         this.vaitro = vaitro;
     }
 
-    public int getIdNhanVien() {
+    public long getIdNhanVien() {
         return idNhanVien;
     }
 
-    public void setIdNhanVien(int idNhanVien) {
+    public void setIdNhanVien(long idNhanVien) {
         this.idNhanVien = idNhanVien;
     }
 

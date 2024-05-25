@@ -6,7 +6,7 @@ package POJO;
 
 
 public class KhachHang {
-    private int idKhachHang;
+    private long idKhachHang;
     private String tenKhachHang;
     private String gioiTinh;
     private String soDienThoai;
@@ -16,7 +16,7 @@ public class KhachHang {
     public KhachHang() {
     }
 
-    public KhachHang(int idKhachHang, String tenKhachHang, String gioiTinh, String soDienThoai, String email, long diem) {
+    public KhachHang(long idKhachHang, String tenKhachHang, String gioiTinh, String soDienThoai, String email, long diem) {
         this.idKhachHang = idKhachHang;
         this.tenKhachHang = tenKhachHang;
         this.gioiTinh = gioiTinh;
@@ -25,11 +25,11 @@ public class KhachHang {
         this.diem = diem;
     }
 
-    public int getIdKhachHang() {
+    public long getIdKhachHang() {
         return idKhachHang;
     }
 
-    public void setIdKhachHang(int idKhachHang) {
+    public void setIdKhachHang(long idKhachHang) {
         this.idKhachHang = idKhachHang;
     }
 

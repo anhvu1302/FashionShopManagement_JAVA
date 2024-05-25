@@ -6,7 +6,7 @@ package POJO;
 
 public class ChiTietHoaDon {
 
-    private int idHoaDon;
+    private long idHoaDon;
     private long idKieuSanPham;
     private int soLuong;
     private long donGia;
@@ -23,7 +23,7 @@ public class ChiTietHoaDon {
         this.kieuSanPham = cthd.kieuSanPham;
     }
 
-    public ChiTietHoaDon(int idHoaDon, long idKieuSanPham, int soLuong, long donGia, KieuSanPham kieuSanPham) {
+    public ChiTietHoaDon(long idHoaDon, long idKieuSanPham, int soLuong, long donGia, KieuSanPham kieuSanPham) {
         this.idHoaDon = idHoaDon;
         this.idKieuSanPham = idKieuSanPham;
         this.soLuong = soLuong;
@@ -31,11 +31,11 @@ public class ChiTietHoaDon {
         this.kieuSanPham = kieuSanPham;
     }
 
-    public int getIdHoaDon() {
+    public long getIdHoaDon() {
         return idHoaDon;
     }
 
-    public void setIdHoaDon(int idHoaDon) {
+    public void setIdHoaDon(long idHoaDon) {
         this.idHoaDon = idHoaDon;
     }
 

@@ -8,10 +8,6 @@ import POJO.*;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-/**
- *
- * @author Nah nah
- */
 public class LoaiSanPhamDAO {
 
     public static ArrayList<LoaiSanPham> getAll() {

@@ -460,3 +460,26 @@ BEGIN
 	INNER JOIN deleted ON KieuSanPham.IdKieuSanPham = deleted.IdKieuSanPham
 	INNER JOIN inserted ON KieuSanPham.IdKieuSanPham = inserted.IdKieuSanPham;
 END;
+--Trigger cập nhật tổng tiền nhập kho
+CREATE TRIGGER trg_update_TongTienHoaDonNhapKho
+ON ChiTietHoaDonNhapKho
+AFTER INSERT, UPDATE, DELETE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Cập nhật TongTien cho các hóa đơn bị ảnh hưởng
+    UPDATE HoaDonNhapKho
+    SET TongTien = (
+        SELECT SUM(SoLuong * DonGia)
+        FROM ChiTietHoaDonNhapKho
+        WHERE ChiTietHoaDonNhapKho.IdHoaDonNhapKho = HoaDonNhapKho.IdHoaDonNhapKho
+    )
+    WHERE HoaDonNhapKho.IdHoaDonNhapKho IN (
+        SELECT DISTINCT IdHoaDonNhapKho
+        FROM inserted
+        UNION
+        SELECT DISTINCT IdHoaDonNhapKho
+        FROM deleted
+    );
+END;

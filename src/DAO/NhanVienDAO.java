@@ -49,7 +49,7 @@ public class NhanVienDAO {
             ResultSet rs = provider.executeQuery(sqlSelect);
             while (rs.next()) {
                 nv = new NhanVien();
-                nv.setIdNhanVien(rs.getInt("IdNhanVien"));
+                nv.setIdNhanVien(rs.getLong("IdNhanVien"));
                 nv.setTenTaiKhoan(rs.getString("TenTaiKhoan"));
                 nv.setMatKhau(rs.getString("MatKhau"));
                 nv.setIdVaiTro(rs.getInt("IdVaiTro"));
@@ -86,7 +86,7 @@ public class NhanVienDAO {
             int dem = 0;
             while (rs.next()) {
                 NhanVien nv = new NhanVien();
-                nv.setIdNhanVien(rs.getInt(1));
+                nv.setIdNhanVien(rs.getLong(1));
                 nv.setTenTaiKhoan(rs.getString(2));
                 nv.setMatKhau(rs.getString(3));
                 nv.setIdVaiTro(rs.getInt(4));
@@ -121,7 +121,7 @@ public class NhanVienDAO {
             ResultSet rs = provider.executeQuery(sqlSelect);
             while (rs.next()) {
                 NhanVien nv = new NhanVien();
-                nv.setIdNhanVien(rs.getInt("IdNhanVien"));
+                nv.setIdNhanVien(rs.getLong("IdNhanVien"));
                 nv.setTenTaiKhoan(rs.getString("TenTaiKhoan"));
                 nv.setMatKhau(rs.getString("MatKhau"));
                 nv.setIdVaiTro(rs.getInt("IdVaiTro"));
@@ -152,7 +152,7 @@ public class NhanVienDAO {
             ResultSet rs = provider.executeQuery(sqlSelect);
             while (rs.next()) {
                 NhanVien nv = new NhanVien();
-                nv.setIdNhanVien(rs.getInt("IdNhanVien"));
+                nv.setIdNhanVien(rs.getLong("IdNhanVien"));
                 nv.setTenTaiKhoan(rs.getString("TenTaiKhoan"));
                 nv.setMatKhau(rs.getString("MatKhau"));
                 nv.setIdVaiTro(rs.getInt("IdVaiTro"));
@@ -194,7 +194,7 @@ public class NhanVienDAO {
             ResultSet rs = provider.executeQuery(sqlSelect);
             while (rs.next()) {
                 NhanVien nv = new NhanVien();
-                nv.setIdNhanVien(rs.getInt(1));
+                nv.setIdNhanVien(rs.getLong(1));
                 nv.setTenTaiKhoan(rs.getString(2));
                 nv.setMatKhau(rs.getString(3));
                 //nv.setIdVaiTro(rs.getInt(4));
@@ -240,7 +240,7 @@ public class NhanVienDAO {
         return kq;
     }
 
-    public static boolean deleteById(int id) {
+    public static boolean deleteById(long id) {
         boolean kq = false;
         String sql = String.format("Delete From NhanVien Where IdNhanVien=%d", id);
         SQLServerDataProvider provider = new SQLServerDataProvider();
@@ -253,7 +253,7 @@ public class NhanVienDAO {
         return kq;
     }
 
-    public static boolean isForeignKeyExistsHD(int ma) {
+    public static boolean isForeignKeyExistsHD(long ma) {
         try {
             String sqlSelect = String.format("SELECT IdNhanVien FROM HoaDon WHERE IdNhanVien = %d", ma);
             SQLServerDataProvider provider = new SQLServerDataProvider();
@@ -268,7 +268,7 @@ public class NhanVienDAO {
         return false;
     }
 
-    public static boolean isForeignKeyExistsHDNK(int ma) {
+    public static boolean isForeignKeyExistsHDNK(long ma) {
         try {
             String sqlSelect = String.format("SELECT IdNhanVien FROM HoaDonNhapKho WHERE IdNhanVien = %d", ma);
             SQLServerDataProvider provider = new SQLServerDataProvider();
