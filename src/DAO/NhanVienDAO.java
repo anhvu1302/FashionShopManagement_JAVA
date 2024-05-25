@@ -41,7 +41,10 @@ public class NhanVienDAO {
         NhanVien nv = null;
         SQLServerDataProvider provider = new SQLServerDataProvider();
         try {
-            String sqlSelect = String.format("SELECT IdNhanVien, TenTaiKhoan, MatKhau, IdVaiTro, TenNhanVien, NgaySinh, GioiTinh, DiaChi, SoDienThoai, Email, TonTai, Cam FROM NhanVien WHERE TenTaiKhoan = '%s';", tenTK);
+            String sqlSelect = String.format("SELECT IdNhanVien, TenTaiKhoan, MatKhau, NV.IdVaiTro, TenNhanVien, NgaySinh, GioiTinh, DiaChi, SoDienThoai, Email, TonTai, Cam,TenVaiTro "
+                    + "FROM NhanVien NV "
+                    + "INNER JOIN VaiTro VT ON NV.IdVaiTro = VT.IdVaiTro "
+                    + "WHERE TenTaiKhoan = '%s';", tenTK);
             provider.open();
             ResultSet rs = provider.executeQuery(sqlSelect);
             while (rs.next()) {
@@ -50,6 +53,8 @@ public class NhanVienDAO {
                 nv.setTenTaiKhoan(rs.getString("TenTaiKhoan"));
                 nv.setMatKhau(rs.getString("MatKhau"));
                 nv.setIdVaiTro(rs.getInt("IdVaiTro"));
+                VaiTro vt = new VaiTro(rs.getInt("IdVaiTro"), rs.getString("TenVaiTro"));
+                nv.setVaitro(vt);
                 nv.setTenNhanVien(rs.getString("TenNhanVien"));
                 nv.setNgaySinh(rs.getString("NgaySinh"));
                 nv.setGioiTinh(rs.getString("GioiTinh"));
@@ -84,7 +89,7 @@ public class NhanVienDAO {
                 nv.setIdNhanVien(rs.getInt(1));
                 nv.setTenTaiKhoan(rs.getString(2));
                 nv.setMatKhau(rs.getString(3));
-                //nv.setIdVaiTro(rs.getInt(4));
+                nv.setIdVaiTro(rs.getInt(4));
                 VaiTro vt = new VaiTro(rs.getInt(4), rs.getString(5));
                 nv.setVaitro(vt);
                 nv.setTenNhanVien(rs.getString(6));
@@ -322,41 +327,5 @@ public class NhanVienDAO {
             e.printStackTrace();
         }
         return false;
-    }
-    //Lấy tt từ mã xuất ra profile ?
-    public static NhanVien getNhanVienForShow(String ten) {
-        NhanVien nv = null;
-        SQLServerDataProvider provider = new SQLServerDataProvider();
-        ResultSet rs = null;
-        try {
-            String sqlSelect = String.format("SELECT IdNhanVien, TenTaiKhoan, MatKhau, nv.IdVaiTro, vt.TenVaiTro, TenNhanVien, NgaySinh, GioiTinh, DiaChi, SoDienThoai, Email "
-                    + "FROM NhanVien nv "
-                    + "INNER JOIN VaiTro vt ON nv.IdVaiTro = vt.IdVaiTro "
-                    + "WHERE TenTaiKhoan= '%s'",ten);
-
-            provider.open();
-            rs = provider.executeQuery(sqlSelect);
-            while (rs.next()) {
-                nv = new NhanVien();
-                nv.setIdNhanVien(rs.getInt(1));
-                nv.setTenTaiKhoan(rs.getString(2));
-                nv.setMatKhau(rs.getString(3));
-                //nv.setIdVaiTro(rs.getInt(4));
-                VaiTro vt = new VaiTro(rs.getInt(4), rs.getString(5));
-                nv.setVaitro(vt);
-                nv.setTenNhanVien(rs.getString(6));
-                nv.setNgaySinh(rs.getString(7));
-                nv.setGioiTinh(rs.getString(8));
-                nv.setDiaChi(rs.getString(9));
-                nv.setSoDienThoai(rs.getString(10));
-                nv.setEmail(rs.getString(11));
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            provider.close();
-        }
-        return nv;
     }
 }

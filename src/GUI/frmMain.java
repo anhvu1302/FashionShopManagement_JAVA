@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import POJO.NhanVienLogin;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 

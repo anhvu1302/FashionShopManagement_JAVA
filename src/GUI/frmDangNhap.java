@@ -6,20 +6,20 @@ package GUI;
 
 import DAO.NhanVienDAO;
 import POJO.NhanVien;
+import POJO.NhanVienLogin;
 import Utils.PasswordHashing;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-
 
 public class frmDangNhap extends javax.swing.JFrame {
 
     /**
      * Creates new form frmDangNhap
      */
-    public static String username;
     public frmDangNhap() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+
     }
 
     /**
@@ -144,6 +144,12 @@ public class frmDangNhap extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
+        txtTenTK.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTenTKKeyPressed(evt);
+            }
+        });
+
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user.png"))); // NOI18N
         jLabel7.setPreferredSize(new java.awt.Dimension(20, 20));
 
@@ -171,6 +177,12 @@ public class frmDangNhap extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/padlock.png"))); // NOI18N
+
+        txtMatKhau.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtMatKhauKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -266,26 +278,50 @@ public class frmDangNhap extends javax.swing.JFrame {
         // TODO add your handling code here:
         String tenTK = txtTenTK.getText();
         String password = txtMatKhau.getText();
-        username =tenTK;
+        if (tenTK.length() == 0) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập tên tài khoản");
+            return;
+        }
+        if (password.length() == 0) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập mật khẩu");
+            return;
+        }
         NhanVien nv = NhanVienDAO.getNhanVienByTenTk(tenTK);
-        if (PasswordHashing.verifyPassword(password, nv.getMatKhau())) {
-            if (nv.isTonTai()) {
-                if (nv.isCam()) {
-                    JOptionPane.showMessageDialog(this, "Tài khoản đã bị cấm. Vui lòng liên hệ quản trị viên!", "Đăng nhập không thành công!", JOptionPane.WARNING_MESSAGE);
+        if (nv == null) {
+            JOptionPane.showMessageDialog(this, "Tài khoản không tồn tại");
+        } else {
+            if (PasswordHashing.verifyPassword(password, nv.getMatKhau())) {
+                if (nv.isTonTai()) {
+                    if (nv.isCam()) {
+                        JOptionPane.showMessageDialog(this, "Tài khoản đã bị cấm. Vui lòng liên hệ quản trị viên!", "Đăng nhập không thành công!", JOptionPane.WARNING_MESSAGE);
+                    } else {
+                        NhanVienLogin.getNhanVienLogin().setNhanVien(nv);
+                        this.setVisible(false);
+                        frmMain frm = new frmMain();
+                        frm.setVisible(true);
+                    }
                 } else {
-                    this.setVisible(false);
-                    frmMain frm = new frmMain();
-                    frm.setVisible(true);
+                    JOptionPane.showMessageDialog(this, "Tài khoản không còn tôn tại. Vui lòng liên hệ quản trị viên!", "Đăng nhập không thành công!", JOptionPane.WARNING_MESSAGE);
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Tài khoản không còn tôn tại. Vui lòng liên hệ quản trị viên!", "Đăng nhập không thành công!", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Tài khoản hoặc mật khẩu sai!", "Đăng nhập không thành công!", JOptionPane.WARNING_MESSAGE);
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "Tài khoản hoặc mật khẩu sai!", "Đăng nhập không thành công!", JOptionPane.WARNING_MESSAGE);
         }
 
 
     }//GEN-LAST:event_btnDangNhapActionPerformed
+
+    private void txtTenTKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTenTKKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnDangNhap.doClick();
+        }
+    }//GEN-LAST:event_txtTenTKKeyPressed
+
+    private void txtMatKhauKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatKhauKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnDangNhap.doClick();
+        }
+    }//GEN-LAST:event_txtMatKhauKeyPressed
 
     /**
      * @param args the command line arguments

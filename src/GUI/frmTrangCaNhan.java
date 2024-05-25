@@ -6,6 +6,7 @@ package GUI;
 
 import DAO.NhanVienDAO;
 import POJO.NhanVien;
+import POJO.NhanVienLogin;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.SwingUtilities;
@@ -21,15 +22,13 @@ public class frmTrangCaNhan extends javax.swing.JInternalFrame {
      */
     public frmTrangCaNhan() {
         initComponents();
-        String tentk = "";
-        tentk = frmDangNhap.username;
+        NhanVien loggedInNV = NhanVienLogin.getNhanVienLogin().nhanVien;
 
-        NhanVien nv = NhanVienDAO.getNhanVienForShow(tentk);
-        txtmaNV.setText(nv.getIdNhanVien() + "");
-        txtTenNV.setText(nv.getTenNhanVien());
-        txtmail.setText(nv.getEmail());
-        txtsdt.setText(nv.getSoDienThoai());
-        txtVaiTro.setText(nv.getVaitro() + "");
+        txtmaNV.setText(loggedInNV.getIdNhanVien() + "");
+        txtTenNV.setText(loggedInNV.getTenNhanVien());
+        txtmail.setText(loggedInNV.getEmail());
+        txtsdt.setText(loggedInNV.getSoDienThoai());
+        txtVaiTro.setText(loggedInNV.getVaitro().getTenVaiTro() + "");
 
     }
 
@@ -62,7 +61,6 @@ public class frmTrangCaNhan extends javax.swing.JInternalFrame {
 
         txtmaNV.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtmaNV.setForeground(new java.awt.Color(255, 102, 0));
-        txtmaNV.setText("jLabel2");
 
         txtmail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtmail.setText("mail");
@@ -184,6 +182,8 @@ public class frmTrangCaNhan extends javax.swing.JInternalFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // Đóng frmMain
+        NhanVienLogin.getNhanVienLogin().nhanVien = new NhanVien();
+
         JFrame frmMain = (JFrame) SwingUtilities.getWindowAncestor(this);
         frmMain.dispose();
 
