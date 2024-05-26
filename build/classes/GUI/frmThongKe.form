@@ -232,7 +232,7 @@
           <Color blue="89" green="36" red="bb" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="QU&#x1ea2;N L&#xdd; NH&#x1eac;P KHO"/>
+        <Property name="text" type="java.lang.String" value="TH&#x1ed0;NG K&#xca;"/>
       </Properties>
     </Component>
   </SubComponents>

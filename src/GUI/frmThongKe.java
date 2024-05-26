@@ -34,7 +34,7 @@ public class frmThongKe extends javax.swing.JInternalFrame {
         // Tạo panel và thêm biểu đồ vào panel
         ChartPanel chartPanel = new ChartPanel(lineChart);
         chartPanel.setPreferredSize(new Dimension(800, 600));
-        setContentPane(chartPanel);
+//        setContentPane(chartPanel);
     }
 private DefaultCategoryDataset createDataset() {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -140,7 +140,7 @@ private DefaultCategoryDataset createDataset() {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(187, 54, 137));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("QUẢN LÝ NHẬP KHO");
+        jLabel1.setText("THỐNG KÊ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

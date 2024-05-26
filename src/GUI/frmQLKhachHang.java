@@ -10,6 +10,7 @@ import POJO.KhachHang;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Vector;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -74,7 +75,7 @@ public class frmQLKhachHang extends javax.swing.JInternalFrame {
                     String sdt = (String) tblKH.getValueAt(editedRow, 3);
                     String mail = (String) tblKH.getValueAt(editedRow, 4);
                     Long diem = (Long) tblKH.getValueAt(editedRow, 5);
-                    lstUpdateKH.add(new KhachHang(id, ten, gTinh, sdt, mail, diem));
+                    lstUpdateKH.add(new KhachHang(id, ten, gTinh, sdt, mail, diem, new Date()));
                 }
             }
         });
@@ -93,7 +94,7 @@ public class frmQLKhachHang extends javax.swing.JInternalFrame {
                     String sdt = (String) tblKH.getValueAt(tblKH.getSelectedRow(), 3);
                     String mail = (String) tblKH.getValueAt(tblKH.getSelectedRow(), 4);
                     Long diem = (Long) tblKH.getValueAt(tblKH.getSelectedRow(), 5);
-                    lstDeleteKH.add(new KhachHang(id, ten, gTinh, sdt, mail, diem));
+                    lstDeleteKH.add(new KhachHang(id, ten, gTinh, sdt, mail, diem,new Date()));
                     dtmKH.removeRow(selectedRow);
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Vui lòng chọn dòng dữ liệu", "Thông báo", JOptionPane.ERROR_MESSAGE);

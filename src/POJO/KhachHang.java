@@ -4,25 +4,29 @@
  */
 package POJO;
 
+import java.util.Date;
 
 public class KhachHang {
+
     private long idKhachHang;
     private String tenKhachHang;
     private String gioiTinh;
     private String soDienThoai;
     private String email;
     private long diem;
+    private Date ngayThem;
 
     public KhachHang() {
     }
 
-    public KhachHang(long idKhachHang, String tenKhachHang, String gioiTinh, String soDienThoai, String email, long diem) {
+    public KhachHang(long idKhachHang, String tenKhachHang, String gioiTinh, String soDienThoai, String email, long diem, Date ngayThem) {
         this.idKhachHang = idKhachHang;
         this.tenKhachHang = tenKhachHang;
         this.gioiTinh = gioiTinh;
         this.soDienThoai = soDienThoai;
         this.email = email;
         this.diem = diem;
+        this.ngayThem = ngayThem;
     }
 
     public long getIdKhachHang() {
@@ -72,4 +76,13 @@ public class KhachHang {
     public void setDiem(long diem) {
         this.diem = diem;
     }
+
+    public Date getNgayThem() {
+        return ngayThem;
+    }
+
+    public void setNgayThem(Date ngayThem) {
+        this.ngayThem = ngayThem;
+    }
+    
 }

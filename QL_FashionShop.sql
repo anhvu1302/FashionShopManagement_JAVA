@@ -33,9 +33,10 @@ CREATE TABLE KhachHang
 	IdKhachHang  BIGINT IDENTITY(1,1),
 	TenKhachHang NVARCHAR(255) NOT NULL,
 	GioiTinh NVARCHAR(5),
-	SoDienThoai CHAR(10),
+	SoDienThoai CHAR(10) NOT NULL,
 	Email VARCHAR(100),
 	Diem BIGINT NOT NULL,
+	NgayThem DATETIME NOT NULL,
 	CONSTRAINT PK_KhachHang PRIMARY KEY(IdKhachHang),
 	CONSTRAINT UNI_SoDienThoai_KhachHang UNIQUE(SoDienThoai),
 	CONSTRAINT UNI_Email_KhachHang UNIQUE(Email),
@@ -43,51 +44,51 @@ CREATE TABLE KhachHang
 	CONSTRAINT CHK_Diem_KH CHECK (Diem >= 0),
 );
 SET IDENTITY_INSERT KhachHang ON 
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (1, N'Vũ Văn Anh', N'Nam', N'0393123456', N'nhatthienhuonglogistics@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (2, N'Trần Thái An', N'Nam', N'0393755621', N'thienhuonglogistics@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (3, N'Lê Bích Thủy', N'Nữ', N'0979598491', N'customer3@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (4, N'Trần Mỹ Huyền', N'Nữ', N'0979598492', N'vantaiduongviet@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (5, N'Lê Ly Trang Nhi', N'Nữ', N'0393888888', N'taynambacsg@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (6, N'Nguyễn Thị Thu', N'Nữ', N'0393888889', N'vantaivohongphat@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (7, N'Phạm Hồng Thái', N'Nam', N'0393123457', N'customer7@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (8, N'Nguyễn Văn Tú', N'Nam', N'0393123458', N'customer8@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (9, N'Lê Thị Lan', N'Nữ', N'0393123459', N'customer9@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (10, N'Nguyễn Minh Hiếu', N'Nam', N'0393123460', N'customer10@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (11, N'Trần Văn Đức', N'Nam', N'0393123461', N'customer11@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (12, N'Nguyễn Thị Mai', N'Nữ', N'0393123462', N'customer12@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (13, N'Lê Thị Thu', N'Nữ', N'0393123463', N'customer13@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (14, N'Phạm Văn Hải', N'Nam', N'0393123464', N'customer14@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (15, N'Trần Thị Nhung', N'Nữ', N'0393123465', N'customer15@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (16, N'Lê Văn Hưng', N'Nam', N'0393123466', N'customer16@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (17, N'Nguyễn Thị Trinh', N'Nữ', N'0393123467', N'customer17@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (18, N'Phạm Văn Thanh', N'Nam', N'0393123468', N'customer18@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (19, N'Trần Thị Quỳnh', N'Nữ', N'0393123469', N'customer19@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (20, N'Nguyễn Văn Lợi', N'Nam', N'0393123470', N'customer20@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (21, N'Phạm Thị Ngọc', N'Nam', N'0393123471', N'customer21@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (22, N'Trần Văn Nam', N'Nam', N'0393123472', N'customer22@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (23, N'Nguyễn Thị Hồng', N'Nữ', N'0393123473', N'customer23@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (24, N'Lê Văn Phúc', N'Nam', N'0393123474', N'customer24@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (25, N'Nguyễn Thị Kim', N'Nữ', N'0393123475', N'customer25@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (26, N'Nguyễn Thị Hương', N'Nữ', N'0393123476', N'customer26@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (27, N'Trần Thị Phương', N'Nữ', N'0393123477', N'customer27@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (28, N'Lê Thị Hải Yến', N'Nữ', N'0393123478', N'customer28@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (29, N'Phạm Thị Trang', N'Nữ', N'0393123479', N'customer29@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (30, N'Nguyễn Thị Linh', N'Nữ', N'0393123480', N'customer30@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (31, N'Trần Thị Thuỳ Dung', N'Nữ', N'0393123481', N'customer31@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (32, N'Lê Thị Thanh Hằng', N'Nữ', N'0393123482', N'customer32@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (33, N'Nguyễn Thị Hà', N'Nữ', N'0393123483', N'customer33@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (34, N'Trần Thị Hồng Loan', N'Nữ', N'0393123484', N'customer34@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (35, N'Phạm Thị Ánh Ngọc', N'Nữ', N'0393123485', N'customer35@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (36, N'Nguyễn Thị Thảo Vy', N'Nữ', N'0393123486', N'customer36@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (37, N'Trần Thị Hồng Nhung', N'Nữ', N'0393123487', N'customer37@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (38, N'Trần Thị Thu Trang', N'Nữ', N'0393123488', N'customer38@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (39, N'Nguyễn Thị Diệu Linh', N'Nữ', N'0393123489', N'customer39@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (40, N'Lê Thị Thanh Trúc', N'Nữ', N'0393123490', N'customer40@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (41, N'Phạm Thị Lan Anh', N'Nữ', N'0393123491', N'customer41@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (42, N'Trần Thị Bích Ngọc', N'Nữ', N'0393123492', N'customer42@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (43, N'Nguyễn Thị Thanh Hương', N'Nữ', N'0393123493', N'customer43@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (44, N'Lê Thị Hoài Thu', N'Nữ', N'0393163493', N'customer44@gmail.com', 0)
-INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) VALUES (45, N'Phạm Thị Mỹ Linh', N'Nữ', N'0393123494', N'customer45@gmail.com', 0)
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (1, N'Vũ Văn Anh', N'Nam', N'0393123456', N'nhatthienhuonglogistics@gmail.com', 0,CAST(N'2024-05-23T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (2, N'Trần Thái An', N'Nam', N'0393755621', N'thienhuonglogistics@gmail.com', 0,CAST(N'2024-05-23T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (3, N'Lê Bích Thủy', N'Nữ', N'0979598491', N'customer3@gmail.com', 0,CAST(N'2024-05-03T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (4, N'Trần Mỹ Huyền', N'Nữ', N'0979598492', N'vantaiduongviet@gmail.com', 0,CAST(N'2024-05-07T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (5, N'Lê Ly Trang Nhi', N'Nữ', N'0393888888', N'taynambacsg@gmail.com', 0,CAST(N'2024-05-08T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (6, N'Nguyễn Thị Thu', N'Nữ', N'0393888889', N'vantaivohongphat@gmail.com', 0,CAST(N'2024-05-09T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (7, N'Phạm Hồng Thái', N'Nam', N'0393123457', N'customer7@gmail.com', 0,CAST(N'2024-05-15T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (8, N'Nguyễn Văn Tú', N'Nam', N'0393123458', N'customer8@gmail.com', 0,CAST(N'2024-05-12T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (9, N'Lê Thị Lan', N'Nữ', N'0393123459', N'customer9@gmail.com', 0,CAST(N'2024-05-11T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (10, N'Nguyễn Minh Hiếu', N'Nam', N'0393123460', N'customer10@gmail.com', 0,CAST(N'2024-05-16T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (11, N'Trần Văn Đức', N'Nam', N'0393123461', N'customer11@gmail.com', 0,CAST(N'2024-05-15T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (12, N'Nguyễn Thị Mai', N'Nữ', N'0393123462', N'customer12@gmail.com', 0,CAST(N'2024-05-14T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (13, N'Lê Thị Thu', N'Nữ', N'0393123463', N'customer13@gmail.com', 0,CAST(N'2024-05-22T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (14, N'Phạm Văn Hải', N'Nam', N'0393123464', N'customer14@gmail.com', 0,CAST(N'2024-05-21T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (15, N'Trần Thị Nhung', N'Nữ', N'0393123465', N'customer15@gmail.com', 0,CAST(N'2024-05-26T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (16, N'Lê Văn Hưng', N'Nam', N'0393123466', N'customer16@gmail.com', 0,CAST(N'2024-05-26T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (17, N'Nguyễn Thị Trinh', N'Nữ', N'0393123467', N'customer17@gmail.com', 0,CAST(N'2024-05-27T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (18, N'Phạm Văn Thanh', N'Nam', N'0393123468', N'customer18@gmail.com', 0,CAST(N'2024-05-27T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (19, N'Trần Thị Quỳnh', N'Nữ', N'0393123469', N'customer19@gmail.com', 0,CAST(N'2024-05-27T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (20, N'Nguyễn Văn Lợi', N'Nam', N'0393123470', N'customer20@gmail.com', 0,CAST(N'2024-05-19T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (21, N'Phạm Thị Ngọc', N'Nam', N'0393123471', N'customer21@gmail.com', 0,CAST(N'2024-04-26T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (22, N'Trần Văn Nam', N'Nam', N'0393123472', N'customer22@gmail.com', 0,CAST(N'2024-04-23T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (23, N'Nguyễn Thị Hồng', N'Nữ', N'0393123473', N'customer23@gmail.com', 0,CAST(N'2024-05-15T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (24, N'Lê Văn Phúc', N'Nam', N'0393123474', N'customer24@gmail.com', 0,CAST(N'2024-05-25T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (25, N'Nguyễn Thị Kim', N'Nữ', N'0393123475', N'customer25@gmail.com', 0,CAST(N'2024-05-15T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (26, N'Nguyễn Thị Hương', N'Nữ', N'0393123476', N'customer26@gmail.com', 0,CAST(N'2024-05-19T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (27, N'Trần Thị Phương', N'Nữ', N'0393123477', N'customer27@gmail.com', 0,CAST(N'2024-05-20T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (28, N'Lê Thị Hải Yến', N'Nữ', N'0393123478', N'customer28@gmail.com', 0,CAST(N'2024-05-22T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (29, N'Phạm Thị Trang', N'Nữ', N'0393123479', N'customer29@gmail.com', 0,CAST(N'2024-05-27T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (30, N'Nguyễn Thị Linh', N'Nữ', N'0393123480', N'customer30@gmail.com', 0,CAST(N'2024-04-28T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (31, N'Trần Thị Thuỳ Dung', N'Nữ', N'0393123481', N'customer31@gmail.com', 0,CAST(N'2024-03-25T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (32, N'Lê Thị Thanh Hằng', N'Nữ', N'0393123482', N'customer32@gmail.com', 0,CAST(N'2024-04-25T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (33, N'Nguyễn Thị Hà', N'Nữ', N'0393123483', N'customer33@gmail.com', 0,CAST(N'2024-04-28T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (34, N'Trần Thị Hồng Loan', N'Nữ', N'0393123484', N'customer34@gmail.com', 0,CAST(N'2024-04-26T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (35, N'Phạm Thị Ánh Ngọc', N'Nữ', N'0393123485', N'customer35@gmail.com', 0,CAST(N'2024-04-28T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (36, N'Nguyễn Thị Thảo Vy', N'Nữ', N'0393123486', N'customer36@gmail.com', 0,CAST(N'2024-04-27T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (37, N'Trần Thị Hồng Nhung', N'Nữ', N'0393123487', N'customer37@gmail.com', 0,CAST(N'2024-05-15T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (38, N'Trần Thị Thu Trang', N'Nữ', N'0393123488', N'customer38@gmail.com', 0,CAST(N'2024-05-14T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (39, N'Nguyễn Thị Diệu Linh', N'Nữ', N'0393123489', N'customer39@gmail.com', 0,CAST(N'2024-04-28T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (40, N'Lê Thị Thanh Trúc', N'Nữ', N'0393123490', N'customer40@gmail.com', 0,CAST(N'2024-04-23T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (41, N'Phạm Thị Lan Anh', N'Nữ', N'0393123491', N'customer41@gmail.com', 0,CAST(N'2024-04-29T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (42, N'Trần Thị Bích Ngọc', N'Nữ', N'0393123492', N'customer42@gmail.com', 0,CAST(N'2024-05-02T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (43, N'Nguyễn Thị Thanh Hương', N'Nữ', N'0393123493', N'customer43@gmail.com', 0,CAST(N'2024-05-01T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (44, N'Lê Thị Hoài Thu', N'Nữ', N'0393163493', N'customer44@gmail.com', 0,CAST(N'2024-05-01T21:43:54.330' AS DateTime))
+INSERT KhachHang (IdKhachHang, TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) VALUES (45, N'Phạm Thị Mỹ Linh', N'Nữ', N'0393123494', N'customer45@gmail.com', 0,CAST(N'2024-04-23T21:43:54.330' AS DateTime))
 SET IDENTITY_INSERT KhachHang OFF
 SELECT * FROM KhachHang
 
@@ -366,7 +367,20 @@ CREATE TABLE HoaDon (
   CONSTRAINT FK_HoaDon_NhanVien FOREIGN KEY(IdNhanVien) REFERENCES NhanVien(IdNhanVien),
   CONSTRAINT FK_HoaDon_KhachHang FOREIGN KEY(IdKhachHang) REFERENCES KhachHang(IdKhachHang)
 );
-
+SET IDENTITY_INSERT HoaDon ON 
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (1, 1, 1, 859900, 7000, N'Tiền mặt', CAST(N'2024-05-23T21:43:54.330' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (2, 1, 1, 859900, 7000, N'Tiền mặt', CAST(N'2024-05-25T21:43:54.330' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (3, 1, 1, 305150, 0, N'Tiền mặt', CAST(N'2024-05-25T21:47:48.330' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (4, 1, 1, 305150, 0, N'Tiền mặt', CAST(N'2024-05-25T21:48:51.780' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (5, 1, 1, 305150, 0, N'Tiền mặt', CAST(N'2024-05-12T21:48:51.780' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (6, 1, 1, 305150, 0, N'Tiền mặt', CAST(N'2024-05-25T21:51:40.660' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (7, 1, 1, 305150, 0, N'Tiền mặt', CAST(N'2024-05-02T21:51:40.660' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (8, 1, 1, 305150, 0, N'Tiền mặt', CAST(N'2024-05-25T22:03:25.917' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (9, 1, 1, 305150, 0, N'Tiền mặt', CAST(N'2024-05-25T22:07:19.227' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (10, 1, 1, 1277550, 0, N'Chuyển khoản', CAST(N'2024-05-26T10:33:05.287' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (11, 1, 1, 305150, 0, N'Tiền mặt', CAST(N'2024-05-26T10:34:26.927' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (12, 1, 1, 3315300, 0, N'Tiền mặt', CAST(N'2024-05-26T11:42:11.840' AS DateTime))
+SET IDENTITY_INSERT HoaDon OFF
 --====================================================================================================---
 
 
@@ -381,7 +395,21 @@ CREATE TABLE ChiTietHoaDon (
   CONSTRAINT CHK_SoLuong_ChiTietHoaDon CHECK(SoLuong >= 0),
   CONSTRAINT CHK_DonGia_ChiTietHoaDon CHECK(DonGia >= 0)
 );
-
+INSERT ChiTietHoaDon (IdHoaDon, IdKieuSanPham, SoLuong, DonGia) VALUES (1, 14, 1, 305150)
+INSERT ChiTietHoaDon (IdHoaDon, IdKieuSanPham, SoLuong, DonGia) VALUES (2, 14, 1, 305150)
+INSERT ChiTietHoaDon (IdHoaDon, IdKieuSanPham, SoLuong, DonGia) VALUES (2, 28, 1, 561750)
+INSERT ChiTietHoaDon (IdHoaDon, IdKieuSanPham, SoLuong, DonGia) VALUES (3, 14, 1, 305150)
+INSERT ChiTietHoaDon (IdHoaDon, IdKieuSanPham, SoLuong, DonGia) VALUES (4, 14, 1, 305150)
+INSERT ChiTietHoaDon (IdHoaDon, IdKieuSanPham, SoLuong, DonGia) VALUES (5, 14, 1, 305150)
+INSERT ChiTietHoaDon (IdHoaDon, IdKieuSanPham, SoLuong, DonGia) VALUES (6, 14, 1, 305150)
+INSERT ChiTietHoaDon (IdHoaDon, IdKieuSanPham, SoLuong, DonGia) VALUES (7, 14, 1, 305150)
+INSERT ChiTietHoaDon (IdHoaDon, IdKieuSanPham, SoLuong, DonGia) VALUES (8, 14, 1, 305150)
+INSERT ChiTietHoaDon (IdHoaDon, IdKieuSanPham, SoLuong, DonGia) VALUES (9, 14, 1, 305150)
+INSERT ChiTietHoaDon (IdHoaDon, IdKieuSanPham, SoLuong, DonGia) VALUES (10, 14, 1, 305150)
+INSERT ChiTietHoaDon (IdHoaDon, IdKieuSanPham, SoLuong, DonGia) VALUES (10, 18, 1, 972400)
+INSERT ChiTietHoaDon (IdHoaDon, IdKieuSanPham, SoLuong, DonGia) VALUES (11, 14, 1, 305150)
+INSERT ChiTietHoaDon (IdHoaDon, IdKieuSanPham, SoLuong, DonGia) VALUES (12, 38, 1, 2952000)
+INSERT ChiTietHoaDon (IdHoaDon, IdKieuSanPham, SoLuong, DonGia) VALUES (12, 43, 1, 363300)
 
 --------------------------- Trigger -----------------------------
 
@@ -460,7 +488,10 @@ BEGIN
 	INNER JOIN deleted ON KieuSanPham.IdKieuSanPham = deleted.IdKieuSanPham
 	INNER JOIN inserted ON KieuSanPham.IdKieuSanPham = inserted.IdKieuSanPham;
 END;
+
 --Trigger cập nhật tổng tiền nhập kho
+
+GO
 CREATE TRIGGER trg_update_TongTienHoaDonNhapKho
 ON ChiTietHoaDonNhapKho
 AFTER INSERT, UPDATE, DELETE
@@ -483,3 +514,87 @@ BEGIN
         FROM deleted
     );
 END;
+
+
+-------------------- Store Procedure ----------------------
+GO
+CREATE PROCEDURE sp_GetSalesByCategory
+    @StartDate DATE,
+    @EndDate DATE
+AS
+BEGIN
+	IF @StartDate > @EndDate
+    BEGIN
+        PRINT 'Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày kết thúc.'
+        RETURN
+    END
+    SELECT 
+        LSPC.IdLoaiSPCha,
+        LSPC.TenLoaiSPCha,
+        SUM(CT.SoLuong) AS SoLuongBan,
+        SUM(CT.SoLuong * CT.DonGia) AS DoanhThu
+    FROM HoaDon HD
+    INNER JOIN ChiTietHoaDon CT ON HD.IdHoaDon = CT.IdHoaDon
+    INNER JOIN KieuSanPham KSP ON CT.IdKieuSanPham = KSP.IdKieuSanPham
+    INNER JOIN SanPham SP ON SP.IdSanPham = KSP.IdSanPham
+    INNER JOIN LoaiSanPham LSP ON LSP.IdLoaiSP = SP.IdLoaiSP
+    INNER JOIN LoaiSanPhamCha LSPC ON LSPC.IdLoaiSPCha = LSP.IdLoaiSPCha
+    WHERE CAST(NgayXuatHD AS DATE) BETWEEN @StartDate AND @EndDate
+    GROUP BY LSPC.IdLoaiSPCha, LSPC.TenLoaiSPCha
+END
+--	EXEC sp_GetSalesByCategory @StartDate = '2024-05-01', @EndDate = '2025-05-30';
+
+GO
+CREATE PROCEDURE sp_GetSalesByProduct
+    @StartDate DATE,
+    @EndDate DATE
+AS
+BEGIN
+	IF @StartDate > @EndDate
+    BEGIN
+        PRINT 'Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày kết thúc.'
+        RETURN
+    END
+    SELECT 
+        SP.IdSanPham,
+        SP.TenSanPham,
+        SUM(CT.SoLuong) AS SoLuongBan,
+        SUM(CT.SoLuong * CT.DonGia) AS DoanhThu
+    FROM HoaDon HD
+    INNER JOIN ChiTietHoaDon CT ON HD.IdHoaDon = CT.IdHoaDon
+    INNER JOIN KieuSanPham KSP ON CT.IdKieuSanPham = KSP.IdKieuSanPham
+    INNER JOIN SanPham SP ON SP.IdSanPham = KSP.IdSanPham
+    WHERE CAST(NgayXuatHD AS DATE) BETWEEN @StartDate AND @EndDate
+    GROUP BY SP.IdSanPham, SP.TenSanPham
+END
+--	EXEC sp_GetSalesByProduct @StartDate = '2024-05-01', @EndDate = '2025-05-30';
+
+
+
+
+GO
+CREATE PROCEDURE sp_ThongKeKhachHangTheoNgay
+    @StartDate DATE,
+    @EndDate DATE
+AS
+BEGIN
+    IF @StartDate > @EndDate
+    BEGIN
+        PRINT 'Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày kết thúc.'
+        RETURN
+    END
+
+    SELECT 
+        CAST(NgayThem AS DATE) AS NgayThem,
+        COUNT(*) AS SoLuongKhachHang
+    FROM 
+        KhachHang
+    WHERE 
+        CAST(NgayThem AS DATE) BETWEEN @StartDate AND @EndDate
+    GROUP BY 
+        CAST(NgayThem AS DATE)
+    ORDER BY 
+        NgayThem;
+END
+
+--	EXEC sp_ThongKeKhachHangTheoNgay @StartDate = '2024-05-01', @EndDate = '2025-05-30';

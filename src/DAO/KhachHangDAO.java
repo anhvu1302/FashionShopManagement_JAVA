@@ -38,7 +38,7 @@ public class KhachHangDAO {
         KhachHang kh = null;
         SQLServerDataProvider provider = new SQLServerDataProvider();
         try {
-            String sql = String.format("SELECT IdKhachHang,TenKhachHang,GioiTinh,SoDienThoai,Email,Diem FROM KhachHang WHERE SoDienThoai = '%s' ", sdt);
+            String sql = String.format("SELECT IdKhachHang,TenKhachHang,GioiTinh,SoDienThoai,Email,Diem,NgayThem FROM KhachHang WHERE SoDienThoai = '%s' ", sdt);
             provider.open();
             ResultSet rs = provider.executeQuery(sql);
             while (rs.next()) {
@@ -49,6 +49,7 @@ public class KhachHangDAO {
                 kh.setSoDienThoai(rs.getString("SoDienThoai"));
                 kh.setEmail(rs.getString("Email"));
                 kh.setDiem(rs.getLong("Diem"));
+                kh.setNgayThem(rs.getDate("NgayThem"));
             }
             provider.close();
         } catch (Exception e) {
@@ -61,8 +62,8 @@ public class KhachHangDAO {
 
     public static boolean add(KhachHang kh) {
         boolean kq = false;
-        String sql = String.format("INSERT INTO KhachHang(TenKhachHang, GioiTinh, SoDienThoai, Email, Diem) "
-                + "VALUES (N'%s', N'%s', '%s', '%s', %d)", kh.getTenKhachHang(), kh.getGioiTinh(), kh.getSoDienThoai(), kh.getEmail(), kh.getDiem());
+        String sql = String.format("INSERT INTO KhachHang(TenKhachHang, GioiTinh, SoDienThoai, Email, Diem, NgayThem) "
+                + "VALUES (N'%s', N'%s', '%s', '%s', %d, GETDATE())", kh.getTenKhachHang(), kh.getGioiTinh(), kh.getSoDienThoai(), kh.getEmail(), kh.getDiem());
         SQLServerDataProvider provider = new SQLServerDataProvider();
         provider.open();
         int n = provider.executeUpdate(sql);
