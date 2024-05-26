@@ -93,7 +93,7 @@ public class frmThanhToan extends javax.swing.JInternalFrame {
     private void resetTTHoaDon() {
         cboPTTT.setSelectedIndex(1);
         txtTongTienHang.setText("");
-        txtTienGiam.setText("");
+        txtTienGiam.setText("0");
         txtTienKhachDua.setText("");
         txtTienThoi.setText("");
     }
@@ -738,7 +738,8 @@ public class frmThanhToan extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-
+        resetTTSanPham();
+        txtBarcode.setText("");
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnthemSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemSPActionPerformed
@@ -754,7 +755,6 @@ public class frmThanhToan extends javax.swing.JInternalFrame {
 
     private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
         if (cthdSelected != null) {
-
             for (ChiTietHoaDon cd : hoaDon.getChiTietHoaDons()) {
                 if (cd.getIdKieuSanPham() == cthdSelected.getIdKieuSanPham()) {
                     cthdSelected.setSoLuong(Integer.parseInt(txtSoLuong.getText()));
@@ -789,6 +789,7 @@ public class frmThanhToan extends javax.swing.JInternalFrame {
                 resetTTHoaDon();
                 resetTTKhachHang();
                 resetTTSanPham();
+                setSpThanhToanModel(new ArrayList<ChiTietHoaDon>());
             } else {
                 JOptionPane.showMessageDialog(this, "Thêm sản phẩm thất bại", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             }

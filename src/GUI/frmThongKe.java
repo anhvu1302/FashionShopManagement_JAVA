@@ -3,7 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package GUI;
-
+import java.awt.Dimension;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 /**
  *
  * @author Nah nah
@@ -15,8 +20,39 @@ public class frmThongKe extends javax.swing.JInternalFrame {
      */
     public frmThongKe() {
         initComponents();
-    }
+        DefaultCategoryDataset dataset = createDataset();
 
+        // Tạo biểu đồ
+        JFreeChart lineChart = ChartFactory.createLineChart(
+                "Biểu đồ đường ví dụ",
+                "Danh mục",
+                "Giá trị",
+                dataset,
+                PlotOrientation.VERTICAL,
+                true, true, false);
+
+        // Tạo panel và thêm biểu đồ vào panel
+        ChartPanel chartPanel = new ChartPanel(lineChart);
+        chartPanel.setPreferredSize(new Dimension(800, 600));
+        setContentPane(chartPanel);
+    }
+private DefaultCategoryDataset createDataset() {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+        dataset.addValue(1, "Dòng 1", "Tháng 1");
+        dataset.addValue(4, "Dòng 1", "Tháng 2");
+        dataset.addValue(3, "Dòng 1", "Tháng 3");
+        dataset.addValue(5, "Dòng 1", "Tháng 4");
+        dataset.addValue(5, "Dòng 1", "Tháng 5");
+
+        dataset.addValue(5, "Dòng 2", "Tháng 1");
+        dataset.addValue(7, "Dòng 2", "Tháng 2");
+        dataset.addValue(6, "Dòng 2", "Tháng 3");
+        dataset.addValue(8, "Dòng 2", "Tháng 4");
+        dataset.addValue(4, "Dòng 2", "Tháng 5");
+
+        return dataset;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
