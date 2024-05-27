@@ -17,6 +17,8 @@ public class HoaDon {
     private long diemSuDung;
     private Date ngayXuatHD;
     private ArrayList<ChiTietHoaDon> chiTietHoaDons;
+    private NhanVien nhanvien; 
+    private KhachHang kh;
 
     public HoaDon(long idHoaDon, long idNhanVien, long idKhachHang, String phuongThucThanhToan, long tongTien, long diemSuDung, Date ngayXuatHD) {
         this.idHoaDon = idHoaDon;
@@ -127,4 +129,27 @@ public class HoaDon {
         }
         return tongTien;
     }
+
+    public NhanVien getNhanvien() {
+        return nhanvien;
+    }
+
+    public void setNhanvien(NhanVien nhanvien) {
+        this.nhanvien = nhanvien;
+    }
+
+    public KhachHang getKh() {
+        return kh;
+    }
+
+    public void setKh(KhachHang kh) {
+        this.kh = kh;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(idHoaDon);
+    }
+
+    
 }

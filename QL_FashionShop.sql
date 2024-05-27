@@ -368,18 +368,18 @@ CREATE TABLE HoaDon (
   CONSTRAINT FK_HoaDon_KhachHang FOREIGN KEY(IdKhachHang) REFERENCES KhachHang(IdKhachHang)
 );
 SET IDENTITY_INSERT HoaDon ON 
-INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (1, 1, 1, 859900, 7000, N'Tiền mặt', CAST(N'2024-05-23T21:43:54.330' AS DateTime))
-INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (2, 1, 1, 859900, 7000, N'Tiền mặt', CAST(N'2024-05-25T21:43:54.330' AS DateTime))
-INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (3, 1, 1, 305150, 0, N'Tiền mặt', CAST(N'2024-05-25T21:47:48.330' AS DateTime))
-INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (4, 1, 1, 305150, 0, N'Tiền mặt', CAST(N'2024-05-25T21:48:51.780' AS DateTime))
-INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (5, 1, 1, 305150, 0, N'Tiền mặt', CAST(N'2024-05-12T21:48:51.780' AS DateTime))
-INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (6, 1, 1, 305150, 0, N'Tiền mặt', CAST(N'2024-05-25T21:51:40.660' AS DateTime))
-INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (7, 1, 1, 305150, 0, N'Tiền mặt', CAST(N'2024-05-02T21:51:40.660' AS DateTime))
-INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (8, 1, 1, 305150, 0, N'Tiền mặt', CAST(N'2024-05-25T22:03:25.917' AS DateTime))
-INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (9, 1, 1, 305150, 0, N'Tiền mặt', CAST(N'2024-05-25T22:07:19.227' AS DateTime))
-INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (10, 1, 1, 1277550, 0, N'Chuyển khoản', CAST(N'2024-05-26T10:33:05.287' AS DateTime))
-INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (11, 1, 1, 305150, 0, N'Tiền mặt', CAST(N'2024-05-26T10:34:26.927' AS DateTime))
-INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (12, 1, 1, 3315300, 0, N'Tiền mặt', CAST(N'2024-05-26T11:42:11.840' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (1, 1, 2, 859900, 7000, N'Tiền mặt', CAST(N'2024-05-23T21:43:54.330' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (2, 3, 3, 859900, 7000, N'Tiền mặt', CAST(N'2024-05-25T21:43:54.330' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (3, 3, 4, 305150, 0, N'Tiền mặt', CAST(N'2024-05-25T21:47:48.330' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (4, 4, 5, 305150, 0, N'Tiền mặt', CAST(N'2024-05-25T21:48:51.780' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (5, 5, 2, 305150, 0, N'Tiền mặt', CAST(N'2024-05-12T21:48:51.780' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (6, 4, 3, 305150, 0, N'Tiền mặt', CAST(N'2024-05-25T21:51:40.660' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (7, 4, 4, 305150, 0, N'Tiền mặt', CAST(N'2024-05-02T21:51:40.660' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (8, 4, 2, 305150, 0, N'Tiền mặt', CAST(N'2024-05-25T22:03:25.917' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (9, 5, 2, 305150, 0, N'Tiền mặt', CAST(N'2024-05-25T22:07:19.227' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (10, 5, 1, 1277550, 0, N'Chuyển khoản', CAST(N'2024-05-26T10:33:05.287' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (11, 4, 3, 305150, 0, N'Tiền mặt', CAST(N'2024-05-26T10:34:26.927' AS DateTime))
+INSERT HoaDon (IdHoaDon, IdNhanVien, IdKhachHang, TongTien, DiemSuDung, PhuongThucThanhToan, NgayXuatHD) VALUES (12, 4, 12, 3315300, 0, N'Tiền mặt', CAST(N'2024-05-26T11:42:11.840' AS DateTime))
 SET IDENTITY_INSERT HoaDon OFF
 --====================================================================================================---
 
@@ -501,11 +501,11 @@ BEGIN
 
     -- Cập nhật TongTien cho các hóa đơn bị ảnh hưởng
     UPDATE HoaDonNhapKho
-    SET TongTien = (
+    SET TongTien = COALESCE((
         SELECT SUM(SoLuong * DonGia)
         FROM ChiTietHoaDonNhapKho
         WHERE ChiTietHoaDonNhapKho.IdHoaDonNhapKho = HoaDonNhapKho.IdHoaDonNhapKho
-    )
+    ), 0)
     WHERE HoaDonNhapKho.IdHoaDonNhapKho IN (
         SELECT DISTINCT IdHoaDonNhapKho
         FROM inserted
@@ -514,6 +514,7 @@ BEGIN
         FROM deleted
     );
 END;
+
 
 
 -------------------- Store Procedure ----------------------

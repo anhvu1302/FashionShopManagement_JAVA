@@ -84,5 +84,10 @@ public class KhachHang {
     public void setNgayThem(Date ngayThem) {
         this.ngayThem = ngayThem;
     }
+
+    @Override
+    public String toString() {
+        return tenKhachHang; 
+    }
     
 }

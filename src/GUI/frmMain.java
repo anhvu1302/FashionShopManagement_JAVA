@@ -56,6 +56,7 @@ public class frmMain extends javax.swing.JFrame {
         dashBoardMenu.setMnemonic('f');
         dashBoardMenu.setText("Dashboard");
 
+        mnuThongKe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         mnuThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/statistics.png"))); // NOI18N
         mnuThongKe.setMnemonic('o');
         mnuThongKe.setText("Thống kê");

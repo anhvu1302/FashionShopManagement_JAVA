@@ -10,6 +10,7 @@ public class ChiTietHoaDonNhapKho {
     private long idKieuSanPham;
     private int soLuong;
     private long donGia;
+    private SanPham sp;
 
     public ChiTietHoaDonNhapKho() {
     }
@@ -19,6 +20,14 @@ public class ChiTietHoaDonNhapKho {
         this.idKieuSanPham = idKieuSanPham;
         this.soLuong = soLuong;
         this.donGia = donGia;
+    }
+
+    public ChiTietHoaDonNhapKho(long idHoaDonNhapKho, long idKieuSanPham, int soLuong, long donGia, SanPham sp) {
+        this.idHoaDonNhapKho = idHoaDonNhapKho;
+        this.idKieuSanPham = idKieuSanPham;
+        this.soLuong = soLuong;
+        this.donGia = donGia;
+        this.sp = sp;
     }
 
     public long getIdHoaDonNhapKho() {
@@ -51,6 +60,14 @@ public class ChiTietHoaDonNhapKho {
 
     public void setDonGia(long donGia) {
         this.donGia = donGia;
+    }
+
+    public SanPham getSp() {
+        return sp;
+    }
+
+    public void setSp(SanPham sp) {
+        this.sp = sp;
     }
 
 }

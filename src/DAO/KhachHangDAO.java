@@ -25,6 +25,7 @@ public class KhachHangDAO {
                 kh.setSoDienThoai(rs.getString(4));
                 kh.setEmail(rs.getString(5));
                 kh.setDiem(rs.getLong(6));
+                kh.setNgayThem(rs.getDate(7));
                 dsKH.add(kh);
             }
             provider.close();

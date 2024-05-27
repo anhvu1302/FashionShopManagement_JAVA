@@ -11,6 +11,7 @@ public class ChiTietHoaDon {
     private int soLuong;
     private long donGia;
     private KieuSanPham kieuSanPham;
+    private SanPham sp;
 
     public ChiTietHoaDon() {
     }
@@ -69,6 +70,14 @@ public class ChiTietHoaDon {
 
     public void setKieuSanPham(KieuSanPham kieuSanPham) {
         this.kieuSanPham = kieuSanPham;
+    }
+
+    public SanPham getSp() {
+        return sp;
+    }
+
+    public void setSp(SanPham sp) {
+        this.sp = sp;
     }
 
 }

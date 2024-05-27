@@ -92,4 +92,10 @@ public class KieuSanPham {
     public void setSanPham(SanPham sanPham) {
         this.sanPham = sanPham;
     }
+
+    @Override
+    public String toString() {
+        return super.toString(); 
+    }
+    
 }

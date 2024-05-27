@@ -37,9 +37,10 @@ public class frmQLKhachHang extends javax.swing.JInternalFrame {
 
     public frmQLKhachHang() {
         initComponents();
-        String[] tieuDe = {"Mã khách hàng", "Tên khách hàng", "Giới tính", "Số điện thoại", "Email", "Điểm"};
+        String[] tieuDe = {"Mã khách hàng", "Tên khách hàng", "Giới tính", "Số điện thoại", "Email", "Điểm","Ngày thêm"};
         dtmKH.setColumnIdentifiers(tieuDe);
         load_tblKhachHang();
+        buttonGroup1.clearSelection();
     }
 
     private void setKhachHangModel(ArrayList<KhachHang> dsKH) {
@@ -52,6 +53,7 @@ public class frmQLKhachHang extends javax.swing.JInternalFrame {
             vec.add(kh.getSoDienThoai());
             vec.add(kh.getEmail());
             vec.add(kh.getDiem());
+            vec.add(kh.getNgayThem());
             dtmKH.addRow(vec);
         }
         TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tblKH.getModel());
@@ -69,7 +71,7 @@ public class frmQLKhachHang extends javax.swing.JInternalFrame {
             public void tableChanged(TableModelEvent e) {
                 if (e.getType() == TableModelEvent.UPDATE && e.getColumn() != TableModelEvent.ALL_COLUMNS && e.getLastRow() == e.getFirstRow()) {
                     int editedRow = e.getFirstRow();
-                    int id = (Integer) tblKH.getValueAt(editedRow, 0);
+                    long id = (Long) tblKH.getValueAt(editedRow, 0);
                     String ten = (String) tblKH.getValueAt(editedRow, 1);
                     String gTinh = (String) tblKH.getValueAt(editedRow, 2);
                     String sdt = (String) tblKH.getValueAt(editedRow, 3);
@@ -88,7 +90,7 @@ public class frmQLKhachHang extends javax.swing.JInternalFrame {
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = tblKH.getSelectedRow();
                 if (selectedRow != -1) {
-                    int id = (Integer) tblKH.getValueAt(tblKH.getSelectedRow(), 0);
+                    long id = (Long) tblKH.getValueAt(tblKH.getSelectedRow(), 0);
                     String ten = (String) tblKH.getValueAt(tblKH.getSelectedRow(), 1);
                     String gTinh = (String) tblKH.getValueAt(tblKH.getSelectedRow(), 2);
                     String sdt = (String) tblKH.getValueAt(tblKH.getSelectedRow(), 3);
@@ -113,6 +115,7 @@ public class frmQLKhachHang extends javax.swing.JInternalFrame {
         rbNu.setSelected(true);
         txtEmail.setText("");
         txtDiem.setText("");
+        buttonGroup1.clearSelection();
     }
 
     /**
@@ -476,8 +479,8 @@ public class frmQLKhachHang extends javax.swing.JInternalFrame {
         }
         String mail = txtEmail.getText();
         String sdt = txtsdt.getText();
-        Long diem = Long.valueOf(txtDiem.getText());
-        if (ten.isEmpty() || mail.isEmpty() || sdt.isEmpty() || txtDiem.getText().isEmpty() || gtinh.isEmpty()) {
+        String diem = txtDiem.getText();
+        if (ten.length() == 0 || mail.length() == 0 || sdt.length() == 0 || diem.length() == 0 || gtinh.trim().length() == 0) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin");
         } else {
             if (KhachHangDAO.checkTrungMailorSDT(mail, sdt)) {
@@ -488,7 +491,7 @@ public class frmQLKhachHang extends javax.swing.JInternalFrame {
                 kh.setGioiTinh(gtinh);
                 kh.setSoDienThoai(sdt);
                 kh.setEmail(mail);
-                kh.setDiem(diem);
+                kh.setDiem(Long.parseLong(diem));
                 KhachHangDAO.add(kh);
                 JOptionPane.showMessageDialog(this, "Thêm khách hàng thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                 load_tblKhachHang();
