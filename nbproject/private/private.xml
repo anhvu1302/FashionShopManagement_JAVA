@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/Huit23-24/HK2/Java/BTLon/fixModel/FashionShopManagement_JAVA/src/POJO/HoaDon.java</file>
+            <file>file:/D:/Huit23-24/HK2/Java/BTLon/fixModel/FashionShopManagement_JAVA/src/GUI/frmQLSanPham.java</file>
             <file>file:/D:/Huit23-24/HK2/Java/BTLon/fixModel/FashionShopManagement_JAVA/src/GUI/frmQLHoaDon.java</file>
+            <file>file:/D:/Huit23-24/HK2/Java/BTLon/fixModel/FashionShopManagement_JAVA/src/DAO/HoaDonNhapKhoDAO.java</file>
+            <file>file:/D:/Huit23-24/HK2/Java/BTLon/fixModel/FashionShopManagement_JAVA/src/GUI/frmNhapKho.java</file>
             <file>file:/D:/Huit23-24/HK2/Java/BTLon/fixModel/FashionShopManagement_JAVA/src/DAO/ChiTietHoaDonDAO.java</file>
+            <file>file:/D:/Huit23-24/HK2/Java/BTLon/fixModel/FashionShopManagement_JAVA/src/DAO/HoaDonDao.java</file>
         </group>
     </open-files>
 </project-private>

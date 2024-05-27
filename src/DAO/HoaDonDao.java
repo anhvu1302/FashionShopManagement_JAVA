@@ -83,6 +83,7 @@ public class HoaDonDao {
                     + "from HoaDon hd "
                     + "inner join NhanVien nv on nv.IdNhanVien = hd.IdNhanVien "
                     + "inner join KhachHang kh on kh.IdKhachHang = hd.IdKhachHang";
+//            String sql="select * from hoadon";
             provider.open();
             ResultSet rs = provider.executeQuery(sql);
             while (rs.next()) {
@@ -110,5 +111,34 @@ public class HoaDonDao {
             e.printStackTrace();
         }
         return dsHD;
+    }
+    public static boolean addOne(HoaDon hd) {
+        boolean kq = false;
+        SQLServerDataProvider provider = new SQLServerDataProvider();
+        try {
+            String sql = String.format("INSERT INTO HoaDon(IdNhanVien,TongTien,DiemSuDung,PhuongThucThanhToan,NgayXuatHD) VALUES(%d,0,%d,N'%s',GETDATE())", hd.getIdNhanVien(),hd.getDiemSuDung(),hd.getPhuongThucThanhToan());
+            provider.open();
+            int n = provider.executeUpdate(sql);
+            if (n == 1) {
+                kq = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            provider.close();
+        }
+        return kq;
+    }
+    public static boolean deleteById(long id) {
+        boolean kq = false;
+        String sql = String.format("Delete From HoaDon Where IdHoaDon=%d", id);
+        SQLServerDataProvider provider = new SQLServerDataProvider();
+        provider.open();
+        int n = provider.executeUpdate(sql);
+        if (n == 1) {
+            kq = true;
+        }
+        provider.close();
+        return kq;
     }
 }
