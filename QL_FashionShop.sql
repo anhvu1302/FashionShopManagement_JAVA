@@ -541,6 +541,7 @@ BEGIN
     INNER JOIN LoaiSanPhamCha LSPC ON LSPC.IdLoaiSPCha = LSP.IdLoaiSPCha
     WHERE CAST(NgayXuatHD AS DATE) BETWEEN @StartDate AND @EndDate
     GROUP BY LSPC.IdLoaiSPCha, LSPC.TenLoaiSPCha
+	ORDER BY DoanhThu DESC
 END
 --	EXEC sp_GetSalesByCategory @StartDate = '2024-05-01', @EndDate = '2025-05-30';
 
@@ -566,6 +567,7 @@ BEGIN
     INNER JOIN SanPham SP ON SP.IdSanPham = KSP.IdSanPham
     WHERE CAST(NgayXuatHD AS DATE) BETWEEN @StartDate AND @EndDate
     GROUP BY SP.IdSanPham, SP.TenSanPham
+	ORDER BY DoanhThu DESC
 END
 --	EXEC sp_GetSalesByProduct @StartDate = '2024-05-01', @EndDate = '2025-05-30';
 

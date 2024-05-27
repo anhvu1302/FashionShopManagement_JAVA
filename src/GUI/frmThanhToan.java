@@ -7,22 +7,32 @@ package GUI;
 import DAO.HoaDonDao;
 import DAO.KhachHangDAO;
 import DAO.KieuSanPhamDAO;
+import DAO.SanPhamThongKeDAO;
 import POJO.ChiTietHoaDon;
 import POJO.HoaDon;
 import POJO.KhachHang;
 import POJO.KieuSanPham;
 import POJO.NhanVienLogin;
+import POJO.SanPhamThongKe;
+import POJO.ThongTinHoaDon;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,6 +43,16 @@ import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -770,29 +790,72 @@ public class frmThanhToan extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnupdateActionPerformed
 
     private void btnTaoHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHoaDonActionPerformed
-        if (hoaDon.getChiTietHoaDons().size() == 0) {
+
+        if (dtmSpThanhToan.getRowCount() == 0) {
             JOptionPane.showMessageDialog(this, "Chưa có sản phẩm nào để thanh toán");
+            return;
+        }
+
+        hoaDon.setIdNhanVien(NhanVienLogin.getNhanVienLogin().nhanVien.getIdNhanVien());
+        if (khCurrent != null) {
+            hoaDon.setIdKhachHang(khCurrent.getIdKhachHang());
         } else {
-            hoaDon.setIdNhanVien(NhanVienLogin.getNhanVienLogin().nhanVien.getIdNhanVien());
-            if (khCurrent != null) {
-                hoaDon.setIdKhachHang(khCurrent.getIdKhachHang());
-            } else {
-                hoaDon.setIdKhachHang(-1);
+            hoaDon.setIdKhachHang(-1);
+        }
+        hoaDon.setDiemSuDung(Long.parseLong(txtTienGiam.getText()));
+        hoaDon.setTongTien(hoaDon.tinhTongTien() - Long.parseLong(txtTienGiam.getText()));
+        hoaDon.setPhuongThucThanhToan((String) cboPTTT.getSelectedItem());
+
+        boolean result = HoaDonDao.add(hoaDon);
+        if (result) {
+            try {
+                ArrayList<ThongTinHoaDon> dataList = new ArrayList<>();
+                for (ChiTietHoaDon cthd : hoaDon.getChiTietHoaDons()) {
+                    ThongTinHoaDon tt = new ThongTinHoaDon();
+                    tt.setTenSanPham(cthd.getKieuSanPham().getSanPham().getTenSanPham());
+                    tt.setMau(cthd.getKieuSanPham().getMau());
+                    tt.setSize(cthd.getKieuSanPham().getSize());
+                    long giaBan = cthd.getKieuSanPham().getSanPham().getGiaBan();
+                    tt.setGiaBan(giaBan);
+                    int giamGia = cthd.getKieuSanPham().getSanPham().getGiamGia();
+                    tt.setGiamGia(giamGia);
+                    tt.setSoLuong(cthd.getSoLuong());
+                    tt.setThanhTien(giaBan * (100 - giamGia) / 100 * cthd.getSoLuong());
+                    dataList.add(tt);
+                }
+
+                JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dataList);
+
+                Map<String, Object> parameters = new HashMap<String, Object>();
+                parameters.put("Parameter1", dataSource);
+                parameters.put("tenNhanVien", NhanVienLogin.getNhanVienLogin().nhanVien.getTenNhanVien());
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+                parameters.put("tgXuatHD", dateFormat.format(new Date()));
+
+                parameters.put("tongTien", hoaDon.getTongTien());
+
+                String projectDirectory = System.getProperty("user.dir");
+                InputStream input = new FileInputStream(new File(projectDirectory + "\\src\\GUI\\ReportHoaDon.jrxml"));
+                JasperDesign jasperDesign = JRXmlLoader.load(input);
+
+                JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+                JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
+
+                // Hiển thị báo cáo
+                JasperViewer.viewReport(jasperPrint);
+            } catch (JRException | FileNotFoundException ex) {
+                ex.printStackTrace();
             }
-            hoaDon.setDiemSuDung(Long.parseLong(txtTienGiam.getText()));
-            hoaDon.setTongTien(hoaDon.tinhTongTien() - Long.parseLong(txtTienGiam.getText()));
-            hoaDon.setPhuongThucThanhToan((String) cboPTTT.getSelectedItem());
-            boolean result = HoaDonDao.add(hoaDon);
-            if (result) {
-                JOptionPane.showMessageDialog(this, "Thêm sản phẩm thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                hoaDon = new HoaDon();
-                resetTTHoaDon();
-                resetTTKhachHang();
-                resetTTSanPham();
-                setSpThanhToanModel(new ArrayList<ChiTietHoaDon>());
-            } else {
-                JOptionPane.showMessageDialog(this, "Thêm sản phẩm thất bại", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-            }
+            JOptionPane.showMessageDialog(this, "Thêm sản phẩm thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            hoaDon = new HoaDon();
+            resetTTHoaDon();
+            resetTTKhachHang();
+            resetTTSanPham();
+            cthdSelected = null;
+            setSpThanhToanModel(new ArrayList<ChiTietHoaDon>());
+        } else {
+            JOptionPane.showMessageDialog(this, "Thêm sản phẩm thất bại", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnTaoHoaDonActionPerformed
 

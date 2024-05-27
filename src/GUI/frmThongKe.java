@@ -9,12 +9,32 @@ import DAO.LoaiSanPhamChaThongKeDAO;
 import DAO.SanPhamThongKeDAO;
 import POJO.KhachHangThongKe;
 import POJO.LoaiSanPhamChaThongKe;
+import POJO.NhanVienLogin;
 import POJO.SanPhamThongKe;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -37,39 +57,7 @@ public class frmThongKe extends javax.swing.JInternalFrame {
      */
     public frmThongKe() {
         initComponents();
-        DefaultCategoryDataset dataset = createDataset();
 
-        // Tạo biểu đồ
-        JFreeChart lineChart = ChartFactory.createLineChart(
-                "Biểu đồ đường ví dụ",
-                "Danh mục",
-                "Giá trị",
-                dataset,
-                PlotOrientation.VERTICAL,
-                true, true, false);
-
-        // Tạo panel và thêm biểu đồ vào panel
-        ChartPanel chartPanel = new ChartPanel(lineChart);
-        chartPanel.setPreferredSize(new Dimension(800, 600));
-//        setContentPane(chartPanel);
-    }
-
-    private DefaultCategoryDataset createDataset() {
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-
-        dataset.addValue(1, "Dòng 1", "Tháng 1");
-        dataset.addValue(4, "Dòng 1", "Tháng 2");
-        dataset.addValue(3, "Dòng 1", "Tháng 3");
-        dataset.addValue(5, "Dòng 1", "Tháng 4");
-        dataset.addValue(5, "Dòng 1", "Tháng 5");
-
-        dataset.addValue(5, "Dòng 2", "Tháng 1");
-        dataset.addValue(7, "Dòng 2", "Tháng 2");
-        dataset.addValue(6, "Dòng 2", "Tháng 3");
-        dataset.addValue(8, "Dòng 2", "Tháng 4");
-        dataset.addValue(4, "Dòng 2", "Tháng 5");
-
-        return dataset;
     }
 
     /**
@@ -90,6 +78,7 @@ public class frmThongKe extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnXuatTK = new javax.swing.JButton();
+        btnXuatTK1 = new javax.swing.JButton();
         bieuDoPanel = new javax.swing.JPanel();
 
         setMaximumSize(new java.awt.Dimension(1536, 778));
@@ -131,6 +120,16 @@ public class frmThongKe extends javax.swing.JInternalFrame {
             }
         });
 
+        btnXuatTK1.setBackground(new java.awt.Color(51, 102, 255));
+        btnXuatTK1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnXuatTK1.setForeground(new java.awt.Color(255, 255, 255));
+        btnXuatTK1.setText("In báo cáo");
+        btnXuatTK1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXuatTK1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -138,19 +137,21 @@ public class frmThongKe extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jLabel2)
-                .addGap(64, 64, 64)
+                .addGap(43, 43, 43)
                 .addComponent(dateNgayBD, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107)
+                .addGap(35, 35, 35)
                 .addComponent(jLabel3)
                 .addGap(44, 44, 44)
                 .addComponent(dateNgayKT, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel4)
                 .addGap(47, 47, 47)
                 .addComponent(cboLoaiTK, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addComponent(btnXuatTK, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addComponent(btnXuatTK1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,7 +164,8 @@ public class frmThongKe extends javax.swing.JInternalFrame {
                     .addComponent(dateNgayKT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboLoaiTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(btnXuatTK, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnXuatTK, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnXuatTK1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14))
         );
 
@@ -203,7 +205,7 @@ public class frmThongKe extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bieuDoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -329,10 +331,40 @@ public class frmThongKe extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnXuatTKActionPerformed
 
+    private void btnXuatTK1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatTK1ActionPerformed
+        try {
+            ArrayList<SanPhamThongKe> dataList = SanPhamThongKeDAO.GetSalesByProduct(dateNgayBD.getDate(), dateNgayKT.getDate());
+
+            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dataList);
+
+            Map<String, Object> parameters = new HashMap<String, Object>();
+            parameters.put("Parameter1", dataSource);
+            parameters.put("nguoiBaoCao", NhanVienLogin.getNhanVienLogin().nhanVien.getTenNhanVien());
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            parameters.put("ngayBD", dateFormat.format(dateNgayBD.getDate()));
+            parameters.put("ngayKT", dateFormat.format(dateNgayKT.getDate()));
+
+            String projectDirectory = System.getProperty("user.dir");
+            InputStream input = new FileInputStream(new File(projectDirectory + "\\src\\GUI\\ReportProduct.jrxml"));
+            JasperDesign jasperDesign = JRXmlLoader.load(input);
+
+            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
+
+            // Hiển thị báo cáo
+            JasperViewer.viewReport(jasperPrint);
+        } catch (JRException | FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+
+    }//GEN-LAST:event_btnXuatTK1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bieuDoPanel;
     private javax.swing.JButton btnXuatTK;
+    private javax.swing.JButton btnXuatTK1;
     private javax.swing.JComboBox<String> cboLoaiTK;
     private com.toedter.calendar.JDateChooser dateNgayBD;
     private com.toedter.calendar.JDateChooser dateNgayKT;

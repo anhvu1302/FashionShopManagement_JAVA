@@ -9,6 +9,7 @@ import DAO.LoaiSanPhamDAO;
 import DAO.SQLServerDataProvider;
 import POJO.LoaiSanPham;
 import POJO.LoaiSanPhamCha;
+import POJO.NhanVienLogin;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -58,9 +59,9 @@ public class frmQLLoaiSanPham extends javax.swing.JInternalFrame {
 
     public frmQLLoaiSanPham() {
         initComponents();
-        
+
         AutoCompleteDecorator.decorate(cbo_LoaiSPCha);
-        
+
         String[] tieuDe = {"Mã loại sản phẩm cha", "Tên loại sản phẩm cha"};
         dtmLSPC.setColumnIdentifiers(tieuDe);
         String[] tieuDe1 = {"Mã loại sản phẩm", "Tên loại sản phẩm", "Loại sản phẩm cha"};
@@ -108,14 +109,20 @@ public class frmQLLoaiSanPham extends javax.swing.JInternalFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                int selectedRow = tbl_LoaiSPCha.getSelectedRow();
-                if (selectedRow != -1) {
-                    int id = (Integer) tbl_LoaiSPCha.getValueAt(tbl_LoaiSPCha.getSelectedRow(), 0);
-                    String ten = (String) tbl_LoaiSPCha.getValueAt(tbl_LoaiSPCha.getSelectedRow(), 1);
-                    lstDeleteLSPC.add(new LoaiSanPhamCha(id, ten));
-                    dtmLSPC.removeRow(selectedRow);
+                String vaiTro = NhanVienLogin.getNhanVienLogin().nhanVien.getVaitro().getTenVaiTro();
+                if (vaiTro.equals("Admin") || vaiTro.equals("Quản lý")) {
+                    int selectedRow = tbl_LoaiSPCha.getSelectedRow();
+                    if (selectedRow != -1) {
+                        int id = (Integer) tbl_LoaiSPCha.getValueAt(tbl_LoaiSPCha.getSelectedRow(), 0);
+                        String ten = (String) tbl_LoaiSPCha.getValueAt(tbl_LoaiSPCha.getSelectedRow(), 1);
+                        lstDeleteLSPC.add(new LoaiSanPhamCha(id, ten));
+                        dtmLSPC.removeRow(selectedRow);
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "Vui lòng chọn dòng dữ liệu", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(rootPane, "Vui lòng chọn dòng dữ liệu", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showConfirmDialog(rootPane, "Bạn không có quyền truy cập chức năng này", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                    return;
                 }
             }
         });
@@ -173,15 +180,21 @@ public class frmQLLoaiSanPham extends javax.swing.JInternalFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                int selectedRow = tbl_LoaiSP.getSelectedRow();
-                if (selectedRow != -1) {
-                    int id = (Integer) tbl_LoaiSP.getValueAt(tbl_LoaiSP.getSelectedRow(), 0);
-                    LoaiSanPham lsp = new LoaiSanPham();
-                    lsp.setIdLoaiSP(id);
-                    lstDeleteLSP.add(lsp);
-                    dtmLSP.removeRow(selectedRow);
+                String vaiTro = NhanVienLogin.getNhanVienLogin().nhanVien.getVaitro().getTenVaiTro();
+                if (vaiTro.equals("Admin") || vaiTro.equals("Quản lý")) {
+                    int selectedRow = tbl_LoaiSP.getSelectedRow();
+                    if (selectedRow != -1) {
+                        int id = (Integer) tbl_LoaiSP.getValueAt(tbl_LoaiSP.getSelectedRow(), 0);
+                        LoaiSanPham lsp = new LoaiSanPham();
+                        lsp.setIdLoaiSP(id);
+                        lstDeleteLSP.add(lsp);
+                        dtmLSP.removeRow(selectedRow);
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "Vui lòng chọn dòng dữ liệu", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(rootPane, "Vui lòng chọn dòng dữ liệu", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showConfirmDialog(rootPane, "Bạn không có quyền truy cập chức năng này", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                    return;
                 }
             }
         });
@@ -853,191 +866,217 @@ public class frmQLLoaiSanPham extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnresetLoaiSPActionPerformed
 
     private void btnthemLoaiSPChaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemLoaiSPChaActionPerformed
-        txtmaLoaiSPCha.setText("");
-        String ten = txttenLoaiSPCha.getText();
-        if (ten.length() == 0) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập tên loại sản phẩm cha");
-        } else {
-            if (LoaiSanPhamChaDAO.checkTenTonTai(ten)) {
-                JOptionPane.showMessageDialog(this, "Tên loại '" + ten + "' đã tồn tại");
+        String vaiTro = NhanVienLogin.getNhanVienLogin().nhanVien.getVaitro().getTenVaiTro();
+        if (vaiTro.equals("Admin") || vaiTro.equals("Quản lý")) {
+            txtmaLoaiSPCha.setText("");
+            String ten = txttenLoaiSPCha.getText();
+            if (ten.length() == 0) {
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập tên loại sản phẩm cha");
             } else {
-                LoaiSanPhamCha lspc = new LoaiSanPhamCha();
-                lspc.setTenLoaiSPCha(ten);
-                LoaiSanPhamChaDAO.add(lspc);
-                JOptionPane.showMessageDialog(this, "Thêm loại sản phẩm cha thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                loadtblLoaiSPCha();
-                LoadCboLoaiSanPhamCha();
+                if (LoaiSanPhamChaDAO.checkTenTonTai(ten)) {
+                    JOptionPane.showMessageDialog(this, "Tên loại '" + ten + "' đã tồn tại");
+                } else {
+                    LoaiSanPhamCha lspc = new LoaiSanPhamCha();
+                    lspc.setTenLoaiSPCha(ten);
+                    LoaiSanPhamChaDAO.add(lspc);
+                    JOptionPane.showMessageDialog(this, "Thêm loại sản phẩm cha thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    loadtblLoaiSPCha();
+                    LoadCboLoaiSanPhamCha();
+                }
             }
+        } else {
+            JOptionPane.showConfirmDialog(this, "Bạn không có quyền truy cập chức năng này", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            return;
         }
+
     }//GEN-LAST:event_btnthemLoaiSPChaActionPerformed
 
     private void btnupdateLoaiSPChaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateLoaiSPChaActionPerformed
-        if (txtmaLoaiSPCha.getText().length() == 0) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm cha muốn cập nhật ở danh sách dưới!");
-        } else {
-            int maLSPC = Integer.parseInt(txtmaLoaiSPCha.getText());
-            String tenLoaiSPCha = txttenLoaiSPCha.getText();
-            LoaiSanPhamCha lspc = new LoaiSanPhamCha(maLSPC, tenLoaiSPCha);
-            lspc.setTenLoaiSPCha(tenLoaiSPCha);
-            boolean result = LoaiSanPhamChaDAO.updateById(lspc);
-            if (result) {
-
-                JOptionPane.showMessageDialog(this, "Cập nhật thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                LoadCboLoaiSanPhamCha();
-                loadtblLoaiSPCha();
+        String vaiTro = NhanVienLogin.getNhanVienLogin().nhanVien.getVaitro().getTenVaiTro();
+        if (vaiTro.equals("Admin") || vaiTro.equals("Quản lý")) {
+            if (txtmaLoaiSPCha.getText().length() == 0) {
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm cha muốn cập nhật ở danh sách dưới!");
             } else {
-                JOptionPane.showMessageDialog(this, "Cập nhật thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_btnupdateLoaiSPChaActionPerformed
+                int maLSPC = Integer.parseInt(txtmaLoaiSPCha.getText());
+                String tenLoaiSPCha = txttenLoaiSPCha.getText();
+                LoaiSanPhamCha lspc = new LoaiSanPhamCha(maLSPC, tenLoaiSPCha);
+                lspc.setTenLoaiSPCha(tenLoaiSPCha);
+                boolean result = LoaiSanPhamChaDAO.updateById(lspc);
+                if (result) {
 
-    private void btndeleteLoaiSPChaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteLoaiSPChaActionPerformed
-        if (txtmaLoaiSPCha.getText().length() == 0) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm cha muốn xóa ở danh sách dưới!");
-        } else {
-            int maLSPCha = Integer.parseInt(txtmaLoaiSPCha.getText());
-            if (LoaiSanPhamChaDAO.isForeignKeyExists(maLSPCha)) {
-                JOptionPane.showMessageDialog(this, "Loại sản phẩm cha đang được sử dụng và không thể xóa!", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            } else {
-                boolean success = LoaiSanPhamChaDAO.deleteById(maLSPCha);
-                if (success) {
-                    JOptionPane.showMessageDialog(this, "Xóa thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                    ResetLoaiSanPhamCha();
+                    JOptionPane.showMessageDialog(this, "Cập nhật thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                     LoadCboLoaiSanPhamCha();
                     loadtblLoaiSPCha();
                 } else {
-                    JOptionPane.showMessageDialog(this, "Xóa không thành công!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Cập nhật thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
                 }
             }
+        } else {
+            JOptionPane.showConfirmDialog(this, "Bạn không có quyền truy cập chức năng này", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+    }//GEN-LAST:event_btnupdateLoaiSPChaActionPerformed
+
+    private void btndeleteLoaiSPChaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteLoaiSPChaActionPerformed
+        String vaiTro = NhanVienLogin.getNhanVienLogin().nhanVien.getVaitro().getTenVaiTro();
+        if (vaiTro.equals("Admin") || vaiTro.equals("Quản lý")) {
+            if (txtmaLoaiSPCha.getText().length() == 0) {
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm cha muốn xóa ở danh sách dưới!");
+            } else {
+                int maLSPCha = Integer.parseInt(txtmaLoaiSPCha.getText());
+                if (LoaiSanPhamChaDAO.isForeignKeyExists(maLSPCha)) {
+                    JOptionPane.showMessageDialog(this, "Loại sản phẩm cha đang được sử dụng và không thể xóa!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    boolean success = LoaiSanPhamChaDAO.deleteById(maLSPCha);
+                    if (success) {
+                        JOptionPane.showMessageDialog(this, "Xóa thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                        ResetLoaiSanPhamCha();
+                        LoadCboLoaiSanPhamCha();
+                        loadtblLoaiSPCha();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Xóa không thành công!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+        } else {
+            JOptionPane.showConfirmDialog(this, "Bạn không có quyền truy cập chức năng này", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            return;
         }
 
     }//GEN-LAST:event_btndeleteLoaiSPChaActionPerformed
 
     private void btnthemLoaiSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemLoaiSPActionPerformed
-        String tenLoaiSP = txttenLoaiSP.getText();
-        LoaiSanPhamCha selected = (LoaiSanPhamCha) cbo_LoaiSPCha.getSelectedItem();
-        if (selected == null) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn loại sản phẩm cha", "Thông báo", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        if (tenLoaiSP == null || tenLoaiSP.length() == 0) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập tên loại sản phẩm", "Thông báo", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
+        String vaiTro = NhanVienLogin.getNhanVienLogin().nhanVien.getVaitro().getTenVaiTro();
+        if (vaiTro.equals("Admin") || vaiTro.equals("Quản lý")) {
+            String tenLoaiSP = txttenLoaiSP.getText();
+            LoaiSanPhamCha selected = (LoaiSanPhamCha) cbo_LoaiSPCha.getSelectedItem();
+            if (selected == null) {
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn loại sản phẩm cha", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (tenLoaiSP == null || tenLoaiSP.length() == 0) {
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập tên loại sản phẩm", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
 
-        LoaiSanPham lsp = new LoaiSanPham();
-        lsp.setTenLoaiSP(tenLoaiSP);
-        lsp.setIdLoaiSPCha(selected.getIdLoaiSPCha());
-        boolean success = LoaiSanPhamDAO.add(lsp);
-        if (success) {
-            JOptionPane.showMessageDialog(this, "Thêm loại sản phẩm thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-            loadtblLoaiSanPham();
+            LoaiSanPham lsp = new LoaiSanPham();
+            lsp.setTenLoaiSP(tenLoaiSP);
+            lsp.setIdLoaiSPCha(selected.getIdLoaiSPCha());
+            boolean success = LoaiSanPhamDAO.add(lsp);
+            if (success) {
+                JOptionPane.showMessageDialog(this, "Thêm loại sản phẩm thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                loadtblLoaiSanPham();
+            } else {
+                JOptionPane.showMessageDialog(this, "Thêm loại sản phẩm thất bại", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "Thêm loại sản phẩm thất bại", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showConfirmDialog(this, "Bạn không có quyền truy cập chức năng này", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            return;
         }
     }//GEN-LAST:event_btnthemLoaiSPActionPerformed
 
     private void btnupdateLoaiSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateLoaiSPActionPerformed
-        if (txtmaLoaiSP.getText().length() == 0) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm muốn cập nhật ở danh sách dưới!");
-        } else {
-            int maLSP = Integer.parseInt(txtmaLoaiSP.getText());
-            String tenLoaiSP = txttenLoaiSP.getText();
-            LoaiSanPhamCha selected = (LoaiSanPhamCha) cbo_LoaiSPCha.getSelectedItem();
-
-            LoaiSanPham lsp = new LoaiSanPham();
-            lsp.setIdLoaiSP(maLSP);
-            lsp.setTenLoaiSP(tenLoaiSP);
-            lsp.setIdLoaiSPCha(selected.getIdLoaiSPCha());
-
-            boolean result = LoaiSanPhamDAO.updateById(lsp);
-            if (result) {
-                JOptionPane.showMessageDialog(this, "Cập nhật thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                loadtblLoaiSanPham();
+        String vaiTro = NhanVienLogin.getNhanVienLogin().nhanVien.getVaitro().getTenVaiTro();
+        if (vaiTro.equals("Admin") || vaiTro.equals("Quản lý")) {
+            if (txtmaLoaiSP.getText().length() == 0) {
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm muốn cập nhật ở danh sách dưới!");
             } else {
-                JOptionPane.showMessageDialog(this, "Cập nhật thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                int maLSP = Integer.parseInt(txtmaLoaiSP.getText());
+                String tenLoaiSP = txttenLoaiSP.getText();
+                LoaiSanPhamCha selected = (LoaiSanPhamCha) cbo_LoaiSPCha.getSelectedItem();
 
+                LoaiSanPham lsp = new LoaiSanPham();
+                lsp.setIdLoaiSP(maLSP);
+                lsp.setTenLoaiSP(tenLoaiSP);
+                lsp.setIdLoaiSPCha(selected.getIdLoaiSPCha());
+
+                boolean result = LoaiSanPhamDAO.updateById(lsp);
+                if (result) {
+                    JOptionPane.showMessageDialog(this, "Cập nhật thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    loadtblLoaiSanPham();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Cập nhật thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+
+                }
             }
+        } else {
+            JOptionPane.showConfirmDialog(this, "Bạn không có quyền truy cập chức năng này", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            return;
         }
-
     }//GEN-LAST:event_btnupdateLoaiSPActionPerformed
 
     private void btndeleteLoaiSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteLoaiSPActionPerformed
-        if (txtmaLoaiSP.getText().length() == 0) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm muốn xóa ở danh sách dưới!");
-            return;
-        } else {
-            int maLSP = Integer.parseInt(txtmaLoaiSP.getText());
-            if (LoaiSanPhamDAO.isForeignKeyExists(maLSP)) {
-                JOptionPane.showMessageDialog(this, "Loại sản phẩm đang được sử dụng và không thể xóa!", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            } else {
-                boolean success = LoaiSanPhamDAO.deleteById(maLSP);
-                if (success) {
-                    JOptionPane.showMessageDialog(this, "Xóa thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                    loadtblLoaiSanPham();
-                    ResetLoaiSanPham();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Xóa không thành công!", "Thông báo", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        }
+
 
     }//GEN-LAST:event_btndeleteLoaiSPActionPerformed
 
     private void btnLuuLSPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuLSPCActionPerformed
-        SQLServerDataProvider provider = new SQLServerDataProvider();
-        if (!lstUpdateLSPC.isEmpty() || !lstDeleteLSPC.isEmpty()) {
+        String vaiTro = NhanVienLogin.getNhanVienLogin().nhanVien.getVaitro().getTenVaiTro();
+        if (vaiTro.equals("Admin") || vaiTro.equals("Quản lý")) {
+            SQLServerDataProvider provider = new SQLServerDataProvider();
+            if (!lstUpdateLSPC.isEmpty() || !lstDeleteLSPC.isEmpty()) {
 
-            try {
-                provider.open();
-                provider.startTransaction();
+                try {
+                    provider.open();
+                    provider.startTransaction();
 
-                LoaiSanPhamChaDAO.updateByList(lstUpdateLSPC);
-                LoaiSanPhamChaDAO.deleteByList(lstDeleteLSPC);
+                    LoaiSanPhamChaDAO.updateByList(lstUpdateLSPC);
+                    LoaiSanPhamChaDAO.deleteByList(lstDeleteLSPC);
 
-                provider.commitTransaction();
-                lstDeleteLSPC.clear();
-                lstUpdateLSPC.clear();
-                JOptionPane.showMessageDialog(this, "Cập nhật dữ liệu thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Cập nhật dữ liệu thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
-                provider.rollbackTransaction();
-            } finally {
-                provider.close();
+                    provider.commitTransaction();
+                    lstDeleteLSPC.clear();
+                    lstUpdateLSPC.clear();
+                    JOptionPane.showMessageDialog(this, "Cập nhật dữ liệu thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Cập nhật dữ liệu thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                    provider.rollbackTransaction();
+                } finally {
+                    provider.close();
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Dữ liệu không có gì thay đổi!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Dữ liệu không có gì thay đổi!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showConfirmDialog(this, "Bạn không có quyền truy cập chức năng này", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            return;
         }
     }//GEN-LAST:event_btnLuuLSPCActionPerformed
 
     private void btnLuuLSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuLSPActionPerformed
-        SQLServerDataProvider provider = new SQLServerDataProvider();
-        for (LoaiSanPham loaiSanPham : lstDeleteLSP) {
-            System.out.println(loaiSanPham.getTenLoaiSP());
-        }
+        String vaiTro = NhanVienLogin.getNhanVienLogin().nhanVien.getVaitro().getTenVaiTro();
+        if (vaiTro.equals("Admin") || vaiTro.equals("Quản lý")) {
+            SQLServerDataProvider provider = new SQLServerDataProvider();
+            for (LoaiSanPham loaiSanPham : lstDeleteLSP) {
+                System.out.println(loaiSanPham.getTenLoaiSP());
+            }
 
-        if (!lstUpdateLSP.isEmpty() || !lstDeleteLSP.isEmpty()) {
+            if (!lstUpdateLSP.isEmpty() || !lstDeleteLSP.isEmpty()) {
 
-            try {
-                provider.open();
-                provider.startTransaction();
+                try {
+                    provider.open();
+                    provider.startTransaction();
 
-                LoaiSanPhamDAO.updateByList(lstUpdateLSP);
-                LoaiSanPhamDAO.deleteByList(lstDeleteLSP);
+                    LoaiSanPhamDAO.updateByList(lstUpdateLSP);
+                    LoaiSanPhamDAO.deleteByList(lstDeleteLSP);
 
-                provider.commitTransaction();
-                lstDeleteLSP.clear();
-                lstUpdateLSP.clear();
-                JOptionPane.showMessageDialog(this, "Cập nhật dữ liệu thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Cập nhật dữ liệu thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
-                provider.rollbackTransaction();
-            } finally {
-                provider.close();
+                    provider.commitTransaction();
+                    lstDeleteLSP.clear();
+                    lstUpdateLSP.clear();
+                    JOptionPane.showMessageDialog(this, "Cập nhật dữ liệu thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Cập nhật dữ liệu thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                    provider.rollbackTransaction();
+                } finally {
+                    provider.close();
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Dữ liệu không có gì thay đổi!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Dữ liệu không có gì thay đổi!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-
+            JOptionPane.showConfirmDialog(this, "Bạn không có quyền truy cập chức năng này", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            return;
         }
     }//GEN-LAST:event_btnLuuLSPActionPerformed
 

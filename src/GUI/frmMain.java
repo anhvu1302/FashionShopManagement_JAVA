@@ -7,6 +7,7 @@ package GUI;
 import POJO.NhanVienLogin;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 
 public class frmMain extends javax.swing.JFrame {
 
@@ -188,10 +189,14 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuThongKeActionPerformed
 
     private void mnuThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuThanhToanActionPerformed
-
-        frmThanhToan frm = new frmThanhToan();
-        showFrm(frm);
-
+        String vaiTro = NhanVienLogin.getNhanVienLogin().nhanVien.getVaitro().getTenVaiTro();
+        if (vaiTro.equals("Nhân viên kho")) {
+            JOptionPane.showConfirmDialog(this, "Bạn không có quyền truy cập chức năng này", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else {
+            frmThanhToan frm = new frmThanhToan();
+            showFrm(frm);
+        }
     }//GEN-LAST:event_mnuThanhToanActionPerformed
 
     private void mnuQLSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuQLSPActionPerformed
@@ -205,23 +210,48 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuQPLoaiSPActionPerformed
 
     private void mnuQLKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuQLKhachHangActionPerformed
-        frmQLKhachHang frm = new frmQLKhachHang();
-        showFrm(frm);
+        String vaiTro = NhanVienLogin.getNhanVienLogin().nhanVien.getVaitro().getTenVaiTro();
+        if (vaiTro.equals("Admin") || vaiTro.equals("Quản lý")) {
+            frmQLKhachHang frm = new frmQLKhachHang();
+            showFrm(frm);
+        } else {
+            JOptionPane.showConfirmDialog(this, "Bạn không có quyền truy cập chức năng này", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
     }//GEN-LAST:event_mnuQLKhachHangActionPerformed
 
     private void mnuQLHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuQLHoaDonActionPerformed
-        frmQLHoaDon frm = new frmQLHoaDon();
-        showFrm(frm);
+        String vaiTro = NhanVienLogin.getNhanVienLogin().nhanVien.getVaitro().getTenVaiTro();
+        if (vaiTro.equals("Admin") || vaiTro.equals("Quản lý")) {
+            frmQLHoaDon frm = new frmQLHoaDon();
+            showFrm(frm);
+        } else {
+            JOptionPane.showConfirmDialog(this, "Bạn không có quyền truy cập chức năng này", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
     }//GEN-LAST:event_mnuQLHoaDonActionPerformed
 
     private void mnuQLNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuQLNhanVienActionPerformed
-        frmQLNhanVien frm = new frmQLNhanVien();
-        showFrm(frm);
+        String vaiTro = NhanVienLogin.getNhanVienLogin().nhanVien.getVaitro().getTenVaiTro();
+        if (vaiTro.equals("Admin") || vaiTro.equals("Quản lý")) {
+            frmQLNhanVien frm = new frmQLNhanVien();
+            showFrm(frm);
+        } else {
+            JOptionPane.showConfirmDialog(this, "Bạn không có quyền truy cập chức năng này", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
     }//GEN-LAST:event_mnuQLNhanVienActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        frmNhapKho frm = new frmNhapKho();
-        showFrm(frm);
+        String vaiTro = NhanVienLogin.getNhanVienLogin().nhanVien.getVaitro().getTenVaiTro();
+        if (vaiTro.equals("Nhân viên thu ngân")) {
+            JOptionPane.showConfirmDialog(this, "Bạn không có quyền truy cập chức năng này", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else {
+            frmNhapKho frm = new frmNhapKho();
+            showFrm(frm);
+        }
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
 //    private void showFram(JFrame newframe) {
