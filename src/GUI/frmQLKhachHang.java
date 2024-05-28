@@ -69,7 +69,7 @@ public class frmQLKhachHang extends javax.swing.JInternalFrame {
             public void tableChanged(TableModelEvent e) {
                 if (e.getType() == TableModelEvent.UPDATE && e.getColumn() != TableModelEvent.ALL_COLUMNS && e.getLastRow() == e.getFirstRow()) {
                     int editedRow = e.getFirstRow();
-                    int id = (Integer) tblKH.getValueAt(editedRow, 0);
+                    Long id = (Long) tblKH.getValueAt(editedRow, 0);
                     String ten = (String) tblKH.getValueAt(editedRow, 1);
                     String gTinh = (String) tblKH.getValueAt(editedRow, 2);
                     String sdt = (String) tblKH.getValueAt(editedRow, 3);

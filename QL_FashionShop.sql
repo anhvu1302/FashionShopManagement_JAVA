@@ -572,6 +572,31 @@ END
 --	EXEC sp_GetSalesByProduct @StartDate = '2024-05-01', @EndDate = '2025-05-30';
 
 
+GO
+CREATE PROCEDURE sp_DoanhThuNhanVien
+    @StartDate DATE,
+    @EndDate DATE
+AS
+BEGIN
+	IF @StartDate > @EndDate
+    BEGIN
+        PRINT 'Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày kết thúc.'
+        RETURN
+    END
+        SELECT 
+        NV.IdNhanVien,
+       NV.TenNhanVien,
+        SUM(CT.SoLuong) AS SoLuongBan,
+        SUM(CT.SoLuong * CT.DonGia) AS DoanhThu
+    FROM HoaDon HD
+    INNER JOIN ChiTietHoaDon CT ON HD.IdHoaDon = CT.IdHoaDon
+    INNER JOIN NhanVien NV ON NV.IdNhanVien = HD.IdNhanVien
+    WHERE CAST(NgayXuatHD AS DATE) BETWEEN @StartDate AND @EndDate
+    GROUP BY NV.IdNhanVien,NV.TenNhanVien
+	ORDER BY DoanhThu DESC
+END
+
+--	EXEC sp_DoanhThuNhanVien @StartDate = '2024-05-01', @EndDate = '2025-05-30';
 
 
 GO
