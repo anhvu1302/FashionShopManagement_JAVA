@@ -146,7 +146,6 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
         btnThemHD = new javax.swing.JButton();
         btnXoaHD = new javax.swing.JButton();
         btnCapNhatHD = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtmaNV = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -179,9 +178,6 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
         jPanel8 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_DsChiTietHoaDon = new javax.swing.JTable();
-        jPanel5 = new javax.swing.JPanel();
-        dateNgayBD = new com.toedter.calendar.JDateChooser();
-        dateNgayKT = new com.toedter.calendar.JDateChooser();
 
         setMaximumSize(new java.awt.Dimension(1536, 778));
         setMinimumSize(new java.awt.Dimension(1536, 778));
@@ -201,6 +197,7 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
         txtmaHoaDon.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtmaHoaDon.setEnabled(false);
 
+        btnResetHD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnResetHD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
         btnResetHD.setText("Reset");
         btnResetHD.addActionListener(new java.awt.event.ActionListener() {
@@ -209,6 +206,7 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
             }
         });
 
+        btnThemHD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnThemHD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/add.png"))); // NOI18N
         btnThemHD.setText("Thêm");
         btnThemHD.addActionListener(new java.awt.event.ActionListener() {
@@ -217,6 +215,7 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
             }
         });
 
+        btnXoaHD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnXoaHD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
         btnXoaHD.setText("Xoá");
         btnXoaHD.addActionListener(new java.awt.event.ActionListener() {
@@ -225,15 +224,9 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
             }
         });
 
+        btnCapNhatHD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnCapNhatHD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/updated.png"))); // NOI18N
         btnCapNhatHD.setText("Cập nhật");
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -248,9 +241,7 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
                 .addComponent(btnXoaHD)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCapNhatHD)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,9 +251,8 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
                     .addComponent(btnResetHD)
                     .addComponent(btnThemHD)
                     .addComponent(btnXoaHD)
-                    .addComponent(btnCapNhatHD)
-                    .addComponent(jButton1))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addComponent(btnCapNhatHD))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -456,10 +446,16 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
         cbmahd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbmahd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        btnResetChiTietHD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnResetChiTietHD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
         btnResetChiTietHD.setText("Reset");
 
+        btnXoaChiTietHD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnXoaChiTietHD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
         btnXoaChiTietHD.setText("Xoá");
 
+        btnCapNhatChiTietHD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCapNhatChiTietHD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/updated.png"))); // NOI18N
         btnCapNhatChiTietHD.setText("Cập nhật");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -487,8 +483,8 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(txtmaksp, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(txtsoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(49, 49, 49)
+                                .addComponent(txtsoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(jLabel13)
                                 .addGap(26, 26, 26)
                                 .addComponent(txtdonGia, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -567,39 +563,6 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
                 .addGap(56, 56, 56))
         );
 
-        dateNgayBD.setDateFormatString("yyyy-MM-dd");
-        dateNgayBD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        dateNgayKT.setDateFormatString("yyyy-MM-dd");
-        dateNgayKT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(404, Short.MAX_VALUE)
-                .addComponent(dateNgayKT, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
-            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(dateNgayBD, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(490, 490, 490)))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(dateNgayKT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel5Layout.createSequentialGroup()
-                    .addGap(35, 35, 35)
-                    .addComponent(dateNgayBD, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(35, Short.MAX_VALUE)))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -615,10 +578,7 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 714, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 714, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -633,13 +593,10 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -746,10 +703,6 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
     private void btnResetHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetHDActionPerformed
         ResetHoaDon();
     }//GEN-LAST:event_btnResetHDActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
     private void ResetMaNV() {
         NhanVien loggedInNV = NhanVienLogin.getNhanVienLogin().nhanVien;
         if (loggedInNV != null) {
@@ -781,9 +734,6 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<Object> cbTenSp;
     private javax.swing.JComboBox<Object> cbmahd;
     private javax.swing.JComboBox<String> cboPhuongThucTT;
-    private com.toedter.calendar.JDateChooser dateNgayBD;
-    private com.toedter.calendar.JDateChooser dateNgayKT;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -801,7 +751,6 @@ public class frmQLHoaDon extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

@@ -8,6 +8,7 @@ import DAO.NhanVienDAO;
 import DAO.VaiTroDAO;
 import POJO.NhanVien;
 import POJO.VaiTro;
+import Utils.PasswordHashing;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,7 +25,6 @@ public class frmQLNhanVien extends javax.swing.JInternalFrame {
 
 //    ArrayList<NhanVien> lstDeleteNV = new ArrayList<>();
 //    ArrayList<NhanVien> lstUpdateNV = new ArrayList<>();
-
     public frmQLNhanVien() {
         initComponents();
         String[] tieuDe = {"Mã nhân viên", "Tên tài khoản", "Mật khẩu", "Tên vai trò", "Tên nhân viên", "Ngày sinh", "Giới tính", "Địa chỉ", "Số điện thoại", "Email", "Tồn tại", "Cấm"};
@@ -503,7 +503,7 @@ public class frmQLNhanVien extends javax.swing.JInternalFrame {
             String sdt = txtsdt.getText();
             String mail = txtEmail.getText();
             System.out.println(ngaysinh);
-            if (tentk.isEmpty() || tennv.isEmpty() || dc.isEmpty() || password.isEmpty() || sdt.isEmpty() || mail.isEmpty()||ngaysinh.isEmpty()) {
+            if (tentk.isEmpty() || tennv.isEmpty() || dc.isEmpty() || password.isEmpty() || sdt.isEmpty() || mail.isEmpty() || ngaysinh.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền đầy đủ thông tin cần thiết.");
                 return;
             }
@@ -515,15 +515,21 @@ public class frmQLNhanVien extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Vui lòng chọn vai trò.");
                 return;
             }
-            
+
             if (NhanVienDAO.isExistsForUpdate(mail, sdt, tentk, maNV)) {
                 JOptionPane.showMessageDialog(this, "Email '" + mail + "\nHoặc SĐT '" + sdt + "\nHoặc tên tài khoản" + tentk + "' đã tồn tại");
                 return;
             }
+            String hashedPassword;
             NhanVien nv = new NhanVien();
             nv.setIdNhanVien(maNV);
             nv.setTenTaiKhoan(tentk);
-            nv.setMatKhau(password);
+            if (password.contains("==:")) {
+                hashedPassword = password;
+            } else {
+                hashedPassword = PasswordHashing.hashPassword(password);
+            }
+            nv.setMatKhau(hashedPassword);
             nv.setIdVaiTro(selected.getIdVaiTro());
             nv.setTenNhanVien(tennv);
             nv.setNgaySinh(ngaysinh);
@@ -552,7 +558,7 @@ public class frmQLNhanVien extends javax.swing.JInternalFrame {
         VaiTro selected = (VaiTro) cboVaiTro.getSelectedItem();
         String password = txtpassword.getText();
         String tennv = txttenNhanVien.getText();
-        String ngaysinh=txtngaysinh.getText();
+        String ngaysinh = txtngaysinh.getText();
 //        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 //        Date ngaysinh = null;
 //        try {
@@ -566,7 +572,7 @@ public class frmQLNhanVien extends javax.swing.JInternalFrame {
         String sdt = txtsdt.getText();
         String mail = txtEmail.getText();
 
-        if (tentk.isEmpty() || tennv.isEmpty() || dc.isEmpty() || password.isEmpty() || sdt.isEmpty() || mail.isEmpty()||ngaysinh.isEmpty()) {
+        if (tentk.isEmpty() || tennv.isEmpty() || dc.isEmpty() || password.isEmpty() || sdt.isEmpty() || mail.isEmpty() || ngaysinh.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Vui lòng điền đầy đủ thông tin cần thiết.");
             return;
         } else {
@@ -582,15 +588,18 @@ public class frmQLNhanVien extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Vui lòng nhập ngày sinh hợp lệ.");
                 return;
             }
-
+            if (sdt.length() > 10) {
+                JOptionPane.showMessageDialog(this, "Định dạng số điện thoại không hợp lệ.");
+                return;
+            }
         }
         if (NhanVienDAO.isExistsForAdd(mail, sdt, tentk)) {
             JOptionPane.showMessageDialog(this, "Email '" + mail + " \nHoặc SĐT '" + sdt + "\nHoặc tên tài khoản" + tentk + "' đã tồn tại");
         } else {
             NhanVien nv = new NhanVien();
-            
+            String hashedPassword = PasswordHashing.hashPassword(password);
             nv.setTenTaiKhoan(tentk);
-            nv.setMatKhau(password);
+            nv.setMatKhau(hashedPassword);
             nv.setIdVaiTro(selected.getIdVaiTro());
             nv.setTenNhanVien(tennv);
             nv.setNgaySinh(ngaysinh);

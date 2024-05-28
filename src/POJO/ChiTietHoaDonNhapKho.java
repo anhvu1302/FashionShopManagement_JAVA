@@ -10,15 +10,17 @@ public class ChiTietHoaDonNhapKho {
     private long idKieuSanPham;
     private int soLuong;
     private long donGia;
+    private KieuSanPham kieuSanPham;
 
     public ChiTietHoaDonNhapKho() {
     }
 
-    public ChiTietHoaDonNhapKho(long idHoaDonNhapKho, long idKieuSanPham, int soLuong, long donGia) {
+    public ChiTietHoaDonNhapKho(long idHoaDonNhapKho, long idKieuSanPham, int soLuong, long donGia, KieuSanPham kieuSanPham) {
         this.idHoaDonNhapKho = idHoaDonNhapKho;
         this.idKieuSanPham = idKieuSanPham;
         this.soLuong = soLuong;
         this.donGia = donGia;
+        this.kieuSanPham = kieuSanPham;
     }
 
     public long getIdHoaDonNhapKho() {
@@ -51,6 +53,14 @@ public class ChiTietHoaDonNhapKho {
 
     public void setDonGia(long donGia) {
         this.donGia = donGia;
+    }
+
+    public KieuSanPham getKieuSanPham() {
+        return kieuSanPham;
+    }
+
+    public void setKieuSanPham(KieuSanPham kieuSanPham) {
+        this.kieuSanPham = kieuSanPham;
     }
 
 }
