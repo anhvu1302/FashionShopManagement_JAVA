@@ -205,7 +205,7 @@ public class frmThongKe extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 33, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bieuDoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,6 +216,14 @@ public class frmThongKe extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnXuatTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatTKActionPerformed
+        if (dateNgayBD.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn ngày bắt đầu.");
+            return;
+        }
+        if (dateNgayKT.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn ngày bắt đầu.");
+            return;
+        }
         if (dateNgayBD.getDate().after(dateNgayKT.getDate())) {
             JOptionPane.showMessageDialog(this, "Ngày bắt đầu không được lớn hơn ngày kết thúc.", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return;
@@ -332,32 +340,66 @@ public class frmThongKe extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnXuatTKActionPerformed
 
     private void btnXuatTK1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatTK1ActionPerformed
-        try {
-            ArrayList<SanPhamThongKe> dataList = SanPhamThongKeDAO.GetSalesByProduct(dateNgayBD.getDate(), dateNgayKT.getDate());
 
-            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dataList);
-
-            Map<String, Object> parameters = new HashMap<String, Object>();
-            parameters.put("Parameter1", dataSource);
-            parameters.put("nguoiBaoCao", NhanVienLogin.getNhanVienLogin().nhanVien.getTenNhanVien());
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-            parameters.put("ngayBD", dateFormat.format(dateNgayBD.getDate()));
-            parameters.put("ngayKT", dateFormat.format(dateNgayKT.getDate()));
-
-            String projectDirectory = System.getProperty("user.dir");
-            InputStream input = new FileInputStream(new File(projectDirectory + "\\src\\GUI\\ReportProduct.jrxml"));
-            JasperDesign jasperDesign = JRXmlLoader.load(input);
-
-            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
-
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
-
-            // Hiển thị báo cáo
-            JasperViewer.viewReport(jasperPrint);
-        } catch (JRException | FileNotFoundException ex) {
-            ex.printStackTrace();
+        if (dateNgayBD.getDate().after(dateNgayKT.getDate())) {
+            JOptionPane.showMessageDialog(this, "Ngày bắt đầu không được lớn hơn ngày kết thúc.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return;
         }
+        if (((String) cboLoaiTK.getSelectedItem()).contains("Danh mục")) {
+            JOptionPane.showConfirmDialog(this, "Chức nắng đang phát triển");
+            return;
+        } else {
+            if (((String) cboLoaiTK.getSelectedItem()).contains("Sản phẩm")) {
+                try {
+                    ArrayList<SanPhamThongKe> dataList = SanPhamThongKeDAO.GetSalesByProduct(dateNgayBD.getDate(), dateNgayKT.getDate());
 
+                    JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dataList);
+
+                    Map<String, Object> parameters = new HashMap<String, Object>();
+                    parameters.put("Parameter1", dataSource);
+                    parameters.put("nguoiBaoCao", NhanVienLogin.getNhanVienLogin().nhanVien.getTenNhanVien());
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                    parameters.put("ngayBD", dateFormat.format(dateNgayBD.getDate()));
+                    parameters.put("ngayKT", dateFormat.format(dateNgayKT.getDate()));
+
+                    String projectDirectory = System.getProperty("user.dir");
+                    InputStream input = new FileInputStream(new File(projectDirectory + "\\src\\GUI\\ReportProduct.jrxml"));
+                    JasperDesign jasperDesign = JRXmlLoader.load(input);
+
+                    JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
+
+                    // Hiển thị báo cáo
+                    JasperViewer.viewReport(jasperPrint);
+                } catch (JRException | FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            } else {
+                try {
+                    ArrayList<KhachHangThongKe> dataList = KhachHangThongKeDao.ThongKeKhachHangTheoNgay(dateNgayBD.getDate(), dateNgayKT.getDate());
+
+                    JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dataList);
+
+                    Map<String, Object> parameters = new HashMap<String, Object>();
+                    parameters.put("Parameter1", dataSource);
+                    parameters.put("nguoiBaoCao", NhanVienLogin.getNhanVienLogin().nhanVien.getTenNhanVien());
+
+                    String projectDirectory = System.getProperty("user.dir");
+                    InputStream input = new FileInputStream(new File(projectDirectory + "\\src\\GUI\\ReportTKKhachHang.jrxml"));
+                    JasperDesign jasperDesign = JRXmlLoader.load(input);
+
+                    JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
+
+                    JasperViewer.viewReport(jasperPrint);
+                } catch (JRException | FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            }
+
+        }
     }//GEN-LAST:event_btnXuatTK1ActionPerformed
 
 

@@ -596,7 +596,7 @@ BEGIN
     GROUP BY 
         CAST(NgayThem AS DATE)
     ORDER BY 
-        NgayThem;
+        NgayThem DESC;
 END
 
 --	EXEC sp_ThongKeKhachHangTheoNgay @StartDate = '2024-05-01', @EndDate = '2025-05-30';
